@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on RiceJS</title>
+    <link>https://hugo-profile.netlify.app/projects/</link>
+    <description>Recent content in Projects on RiceJS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo-profile.netlify.app/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Caribbean Log Tracker</title>
+      <link>https://hugo-profile.netlify.app/projects/caribbean-tracker/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-profile.netlify.app/projects/caribbean-tracker/</guid>
+      <description>A Real-Time Data Management Solution Ever thought about how to make sense of all the data you have just floating around your business? This application, Caribbean Log Data Dashboard, built with React Leaflet, MySQL, and Laravel aims to address that.
+Dashboard Architecture React Leaflet: For the cool interactive map you see on the dashboard. MySQL: Where all the data lives. Laravel: Makes sure everything talks to each other nicely and keeps it secure.</description>
+    </item>
+    
+    <item>
+      <title>Eye-Tracking AAC System</title>
+      <link>https://hugo-profile.netlify.app/projects/eyetracker/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-profile.netlify.app/projects/eyetracker/</guid>
+      <description>Eye-Tracking AAC System Augmentative and Alternative Communication (AAC) refers to the field of emerging technologies that utilizes communication systems to aide or supplement speech or writing for those with impairments or difficulties communicating.
+It allows people to regain or enhance certain communications skills usually impaired by congenital conditions or acquired maladies such as autism or cerebral palsy.
+Inspiration I was captivated by a particular episode of Breaking Bad where Hector Salamanca, a paraplegic and mute character, is being questioned by the DEA.</description>
+    </item>
+    
+    <item>
+      <title>WhatsApp Meme Bot</title>
+      <link>https://hugo-profile.netlify.app/projects/whatsapp-bot/</link>
+      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-profile.netlify.app/projects/whatsapp-bot/</guid>
+      <description>Memes I love memes and rice. It is known. Ever been in a chat and thought, &amp;ldquo;need meme now&amp;rdquo;? Well, your wish is this bot&amp;rsquo;s command. This bot spices up conversations with memes from my handpicked Instagram collection.
+The Guts of the Operation Python: The muscle that digs through my memes. Selenium: Helps Python interact with WhatsApp Web. WhatsApp Web: Where your chats get a dose of meme magic. How it works Text me &amp;ldquo;memepls&amp;rdquo; on WhatsApp, and this Python-powered bot will dive into my ultimate meme collection on my local computer.</description>
+    </item>
+    
+  </channel>
+</rss>
