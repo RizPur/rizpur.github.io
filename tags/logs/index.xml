@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logs on RiceJS</title>
+    <link>https://hugo-profile.netlify.app/tags/logs/</link>
+    <description>Recent content in Logs on RiceJS</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://hugo-profile.netlify.app/tags/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Caribbean Log Tracker</title>
+      <link>https://hugo-profile.netlify.app/projects/caribbean-tracker/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://hugo-profile.netlify.app/projects/caribbean-tracker/</guid>
+      <description>A Real-Time Data Management Solution Ever thought about how to make sense of all the data you have just floating around your business? This application, Caribbean Log Data Dashboard, built with React Leaflet, MySQL, and Laravel aims to address that.&#xA;Dashboard Architecture React Leaflet: For the cool interactive map you see on the dashboard. MySQL: Where all the data lives. Laravel: Makes sure everything talks to each other nicely and keeps it secure.</description>
+    </item>
+  </channel>
+</rss>
