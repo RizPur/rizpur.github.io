@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on RizPur</title><link>https://rizpur.com/tags/javascript/</link><description>Recent content in JavaScript on RizPur</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 26 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://rizpur.com/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Eye-Tracking AAC System</title><link>https://rizpur.com/projects/eyetracker/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/projects/eyetracker/</guid><description>Eye-Tracking AAC System Augmentative and Alternative Communication (AAC) refers to the field of emerging technologies that utilizes communication systems to aide or supplement speech or writing for those with impairments or difficulties communicating.
-It allows people to regain or enhance certain communications skills usually impaired by congenital conditions or acquired maladies such as autism or cerebral palsy.
-Inspiration I was captivated by a particular episode of Breaking Bad where Hector Salamanca, a paraplegic and mute character, is being questioned by the DEA.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on RizPur</title>
+    <link>https://rizpur.com/tags/javascript/</link>
+    <description>Recent content in JavaScript on RizPur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rizpur.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eye-Tracking AAC System</title>
+      <link>https://rizpur.com/projects/eyetracker/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/projects/eyetracker/</guid>
+      <description>Eye-Tracking AAC System Augmentative and Alternative Communication (AAC) refers to the field of emerging technologies that utilizes communication systems to aide or supplement speech or writing for those with impairments or difficulties communicating.&#xA;It allows people to regain or enhance certain communications skills usually impaired by congenital conditions or acquired maladies such as autism or cerebral palsy.&#xA;Inspiration I was captivated by a particular episode of Breaking Bad where Hector Salamanca, a paraplegic and mute character, is being questioned by the DEA.</description>
+    </item>
+  </channel>
+</rss>

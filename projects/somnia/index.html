@@ -1,169 +1,553 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><meta http-equiv=Accept-CH content="DPR, Viewport-Width, Width"><link rel=icon href=/rice-logo.png type=image/gif><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" media=print onload='this.media="all"'><noscript><link href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel=stylesheet></noscript><link rel=stylesheet href=/css/font.css media=all><meta property="og:url" content="https://rizpur.com/projects/somnia/"><meta property="og:site_name" content="RizPur"><meta property="og:title" content="Somnia: AI-Powered Dream Journal"><meta property="og:description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2024-09-20T00:00:00+00:00"><meta property="article:modified_time" content="2024-09-20T00:00:00+00:00"><meta property="article:tag" content="Flutter"><meta property="article:tag" content="Dart"><meta property="article:tag" content="AI/ML"><meta property="article:tag" content="Supabase"><meta property="article:tag" content="Mobile Development"><meta property="article:tag" content="Dream Analysis"><meta name=twitter:card content="summary"><meta name=twitter:title content="Somnia: AI-Powered Dream Journal"><meta name=twitter:description content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization"><link rel=stylesheet href=/bootstrap-5/css/bootstrap.min.css media=all><link rel=stylesheet href=/css/header.css media=all><link rel=stylesheet href=/css/footer.css media=all><link rel=stylesheet href=/css/theme.css media=all><style>:root{--text-color:#343a40;--text-secondary-color:#6c757d;--text-link-color:#007bff;--background-color:#eaedf0;--secondary-background-color:#64ffda1a;--primary-color:#007bff;--secondary-color:#f8f9fa;--text-color-dark:#e4e6eb;--text-secondary-color-dark:#b0b3b8;--text-link-color-dark:#ffffff;--background-color-dark:#18191a;--secondary-background-color-dark:#212529;--primary-color-dark:#ffffff;--secondary-color-dark:#212529}body{font-size:1.1rem;font-weight:400;line-height:1.6;text-align:left}html{background-color:var(--background-color)!important}body::-webkit-scrollbar{height:0;width:8px;background-color:var(--background-color)}::-webkit-scrollbar-track{border-radius:1rem}::-webkit-scrollbar-thumb{border-radius:1rem;background:#b0b0b0;outline:1px solid var(--background-color)}#search-content::-webkit-scrollbar{width:.5em;height:.1em;background-color:var(--background-color)}</style><link rel=stylesheet href=/css/custom.css media=all><meta name=description content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization"><link rel=stylesheet href=/css/single.css><script defer src=/fontawesome-6/all-6.4.2.js></script><title>Somnia: AI-Powered Dream Journal | RizPur</title></head><body class=light><script>let localStorageValue=localStorage.getItem("pref-theme"),mediaQuery=window.matchMedia("(prefers-color-scheme: dark)").matches;switch(localStorageValue){case"dark":document.body.classList.add("dark");break;case"light":document.body.classList.remove("dark");break;default:mediaQuery&&document.body.classList.add("dark");break}</script><header id=profileHeader><nav class="pt-3 navbar navbar-expand-lg animate"><div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5"><a class="navbar-brand primary-font text-wrap" href=/><img src=/rice-logo.png width=30 height=30 class="d-inline-block align-top">
-RizPur</a><div><input id=search autocomplete=off class="form-control mr-sm-2 d-none d-md-block" placeholder='Ctrl + k to Search...' aria-label=Search oninput=searchOnChange(event)></div><button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarContent aria-controls=navbarContent aria-expanded=false aria-label="Toggle navigation"><svg aria-hidden="true" height="24" viewBox="0 0 16 16" width="24" data-view-component="true"><path fill-rule="evenodd" d="M1 2.75A.75.75.0 011.75 2h12.5a.75.75.0 110 1.5H1.75A.75.75.0 011 2.75zm0 5A.75.75.0 011.75 7h12.5a.75.75.0 110 1.5H1.75A.75.75.0 011 7.75zM1.75 12a.75.75.0 100 1.5h12.5a.75.75.0 100-1.5H1.75z"/></svg></button><div class="collapse navbar-collapse text-wrap primary-font" id=navbarContent><ul class="navbar-nav ms-auto text-center"><li class="nav-item navbar-text d-block d-md-none"><div class=nav-link><input id=search autocomplete=off class="form-control mr-sm-2" placeholder='Ctrl + k to Search...' aria-label=Search oninput=searchOnChange(event)></div></li><li class="nav-item navbar-text"><a class=nav-link href=/#about aria-label=about>About Me</a></li><li class="nav-item navbar-text"><a class=nav-link href=/#experience aria-label=experience>Experience</a></li><li class="nav-item navbar-text"><a class=nav-link href=/#projects aria-label=projects>Projects</a></li><li class="nav-item navbar-text"><a class=nav-link href=/#contact aria-label=contact>Contact</a></li><li class="nav-item navbar-text"><a class=nav-link href=/blogs title="Tech Notes & Life Logs">Blogs</a></li><li class="nav-item navbar-text"><div class=text-center><button id=theme-toggle><svg id="moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></li></ul></div></div></nav></header><div id=content><section id=single><div class=container><div class="row justify-content-center"><div class="col-sm-12 col-md-12 col-lg-9"><div class=pr-lg-4><div class="title mb-5"><h1 class="text-center mb-4">Somnia: AI-Powered Dream Journal</h1><div class=text-center>Joel Brown
-<small>|</small>
-Sep 20, 2024
-<span id=readingTime>min read</span></div></div><div class=featured-image><img class="img-fluid mx-auto d-block" src=/images/projects/somnia/somnia_logo.png alt="Somnia: AI-Powered Dream Journal"></div><article class="page-content p-2"><h1 id=somnia-when-dreams-meet-ai>Somnia: When Dreams Meet AI</h1><p>Ever wondered what your dreams actually mean? As a 27-year-old engineering student fascinated by the intersection of AI and human psychology, I built Somnia - a modern Flutter dream journal that uses AI to unlock the hidden patterns in your subconscious mind.</p><p>This isn&rsquo;t just another note-taking app. It&rsquo;s a complete system that combines dream logging, AI-powered analysis, and freemium monetization into a polished mobile experience.</p><h2 id=the-problem-i-wanted-to-solve>The Problem I Wanted to Solve</h2><p>During my time at Digicel, I learned the value of data analysis and pattern recognition in network systems. I got curious: what if we could apply similar analytical approaches to something as personal and mysterious as dreams?</p><p>Traditional dream journals are just text dumps. You write, you forget, you never really understand the patterns. I wanted something smarter - an app that could:</p><ul><li>Track dreams with rich metadata (mood, lucidity, themes)</li><li>Analyze patterns using AI</li><li>Provide actionable insights for lucid dreaming</li><li>Actually help users understand their subconscious minds</li></ul><h2 id=the-complete-system-architecture>The Complete System Architecture</h2><h3 id=frontend-modern-flutter-with-riverpod>Frontend: Modern Flutter with Riverpod</h3><p>Somnia is built with Flutter, using the latest Material Design 3 principles and sophisticated state management:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#75715e>// Clean, type-safe state management with Riverpod
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>final</span> dreamProvider <span style=color:#f92672>=</span> StateNotifierProvider<span style=color:#f92672>&lt;</span>DreamNotifier, AsyncValue<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Dream<span style=color:#f92672>&gt;&gt;&gt;</span>(
-</span></span><span style=display:flex><span>  (ref) <span style=color:#f92672>=&gt;</span> DreamNotifier(ref.read(supabaseServiceProvider))
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Real-time UI updates with proper loading states
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DreamListScreen</span> <span style=color:#66d9ef>extends</span> ConsumerWidget {
-</span></span><span style=display:flex><span>  <span style=color:#960050;background-color:#1e0010>@</span>override
-</span></span><span style=display:flex><span>  Widget build(BuildContext context, WidgetRef ref) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>final</span> dreamsAsync <span style=color:#f92672>=</span> ref.watch(dreamProvider);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> dreamsAsync.when(
-</span></span><span style=display:flex><span>      loading: () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>const</span> LottieLoadingWidget(),
-</span></span><span style=display:flex><span>      error: (error, stack) <span style=color:#f92672>=&gt;</span> ErrorWidget(error.toString()),
-</span></span><span style=display:flex><span>      data: (dreams) <span style=color:#f92672>=&gt;</span> DreamListView(dreams: dreams),
-</span></span><span style=display:flex><span>    );
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><strong>Key Features:</strong></p><ul><li><strong>Material Design 3</strong> with custom dream-themed color palette</li><li><strong>Riverpod state management</strong> for reactive UI updates</li><li><strong>Lottie animations</strong> for smooth loading states</li><li><strong>Responsive design</strong> that works across different screen sizes</li></ul><h3 id=backend-supabase-with-edge-functions>Backend: Supabase with Edge Functions</h3><p>Instead of building a custom backend, I leveraged Supabase for maximum efficiency:</p><p><strong>Database Schema:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>-- Core dreams table
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> dreams (
-</span></span><span style=display:flex><span>  id UUID <span style=color:#66d9ef>DEFAULT</span> gen_random_uuid() <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span>,
-</span></span><span style=display:flex><span>  user_id UUID <span style=color:#66d9ef>REFERENCES</span> auth.users(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
-</span></span><span style=display:flex><span>  title TEXT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>  content TEXT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>  dream_date DATE <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>  mood_rating INTEGER, <span style=color:#75715e>-- 3, 6, or 9 (sad, neutral, happy)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  is_lucid BOOLEAN <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>FALSE</span>,
-</span></span><span style=display:flex><span>  tags TEXT[],
-</span></span><span style=display:flex><span>  created_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>WITH</span> TIME <span style=color:#66d9ef>ZONE</span> <span style=color:#66d9ef>DEFAULT</span> NOW()
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- AI analysis results
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> dream_analyses (
-</span></span><span style=display:flex><span>  id UUID <span style=color:#66d9ef>DEFAULT</span> gen_random_uuid() <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span>,
-</span></span><span style=display:flex><span>  dream_id UUID <span style=color:#66d9ef>REFERENCES</span> dreams(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
-</span></span><span style=display:flex><span>  user_id UUID <span style=color:#66d9ef>REFERENCES</span> auth.users(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
-</span></span><span style=display:flex><span>  analysis_text TEXT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>  insights JSONB <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>, <span style=color:#75715e>-- Themes, emotions, symbols, etc.
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  model_used TEXT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;gpt-3.5-turbo&#39;</span>,
-</span></span><span style=display:flex><span>  confidence_score DECIMAL(<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>2</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>.<span style=color:#ae81ff>85</span>,
-</span></span><span style=display:flex><span>  credits_consumed INTEGER <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>  created_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>WITH</span> TIME <span style=color:#66d9ef>ZONE</span> <span style=color:#66d9ef>DEFAULT</span> NOW()
-</span></span><span style=display:flex><span>);
-</span></span></code></pre></div><h3 id=ai-analysis-openai-edge-functions>AI Analysis: OpenAI Edge Functions</h3><p>The real magic happens in the AI analysis system. I deployed a Supabase Edge Function that integrates with OpenAI:</p><p><strong>Edge Function Deployment:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// supabase/functions/analyze-dream/index.ts
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>serve</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;https://deno.land/std@0.168.0/http/server.ts&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>createClient</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;https://esm.sh/@supabase/supabase-js@2&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>serve</span>(<span style=color:#66d9ef>async</span> (<span style=color:#a6e22e>req</span>) <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>dreamText</span>, <span style=color:#a6e22e>userId</span> } <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>req</span>.<span style=color:#a6e22e>json</span>()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Check user credits and subscription
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>user</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>supabase</span>
-</span></span><span style=display:flex><span>    .<span style=color:#66d9ef>from</span>(<span style=color:#e6db74>&#39;user_profiles&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#39;subscription_tier, credits_remaining&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>eq</span>(<span style=color:#e6db74>&#39;id&#39;</span>, <span style=color:#a6e22e>userId</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>single</span>()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>data</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>credits_remaining</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>data</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>subscription_tier</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;free&#39;</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Response</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>({
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>error</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Insufficient credits&#39;</span>
-</span></span><span style=display:flex><span>    }), { <span style=color:#a6e22e>status</span>: <span style=color:#66d9ef>402</span> })
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Analyze with OpenAI
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>analysis</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>openai</span>.<span style=color:#a6e22e>chat</span>.<span style=color:#a6e22e>completions</span>.<span style=color:#a6e22e>create</span>({
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>model</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;gpt-3.5-turbo&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>messages</span><span style=color:#f92672>:</span> [{
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>role</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;system&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>content</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;You are a professional dream analyst. Provide insights about themes, emotions, symbols, and lucidity probability.&#34;</span>
-</span></span><span style=display:flex><span>    }, {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>role</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;user&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>content</span>: <span style=color:#66d9ef>dreamText</span>
-</span></span><span style=display:flex><span>    }],
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>max_tokens</span>: <span style=color:#66d9ef>200</span> <span style=color:#75715e>// Cost optimization
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  })
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Store results and update credits
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// ... implementation
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>})
-</span></span></code></pre></div><h2 id=smart-features-that-actually-work>Smart Features That Actually Work</h2><h3 id=1-intelligent-dream-logging>1. Intelligent Dream Logging</h3><p>The app goes beyond basic text entry:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Dream</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>String</span> id;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>String</span> title;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>String</span> content;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> DateTime dreamDate;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>?</span> moodRating; <span style=color:#75715e>// 3 (sad), 6 (neutral), 9 (happy)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>bool</span> isLucid;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> List<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>String</span><span style=color:#f92672>&gt;</span> tags;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>bool</span> hasAiAnalysis;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>String</span><span style=color:#f92672>?</span> aiAnalysisText;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Auto-generates titles if user doesn&#39;t provide one
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>String</span> <span style=color:#66d9ef>get</span> displayTitle {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (title.trim().isNotEmpty) <span style=color:#66d9ef>return</span> title;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> DreamTitleGenerator.generateTitle(content);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=2-ai-powered-analysis-system>2. AI-Powered Analysis System</h3><p>Each dream can be analyzed for:</p><ul><li><strong>Themes</strong>: Recurring patterns (flying, water, people)</li><li><strong>Emotions</strong>: Underlying emotional content</li><li><strong>Symbols</strong>: Psychological meanings of dream elements</li><li><strong>Lucidity Probability</strong>: Likelihood the dream was lucid</li><li><strong>Mood Correlation</strong>: How the dream relates to daily mood</li><li><strong>Recommendations</strong>: Personalized tips for lucid dreaming</li></ul><h3 id=3-freemium-business-model>3. Freemium Business Model</h3><p>I implemented a complete freemium system:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserSubscription</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>String</span> subscriptionTier; <span style=color:#75715e>// &#39;free&#39;, &#39;premium&#39;, &#39;ultra&#39;
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>int</span> creditsRemaining;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> DateTime<span style=color:#f92672>?</span> premiumExpiresAt;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>bool</span> <span style=color:#66d9ef>get</span> canAnalyzeDream <span style=color:#f92672>=&gt;</span> isPremium <span style=color:#f92672>||</span> creditsRemaining <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>int</span> <span style=color:#66d9ef>get</span> monthlyAnalysisLimit {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>switch</span> (subscriptionTier) {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;free&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>10</span>;
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;premium&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>50</span>;
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;ultra&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>; <span style=color:#75715e>// Unlimited
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><strong>Business Logic:</strong></p><ul><li><strong>Free Tier</strong>: 10 AI analyses per month</li><li><strong>Premium</strong>: 50 analyses + advanced insights</li><li><strong>Ultra</strong>: Unlimited + priority processing</li><li><strong>Cost per analysis</strong>: ~$0.001 (highly profitable)</li></ul><h2 id=technical-deep-dive>Technical Deep Dive</h2><h3 id=state-management-with-riverpod>State Management with Riverpod</h3><p>Coming from my network engineering background, I appreciate robust state management. Riverpod provides exactly that:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DreamNotifier</span> <span style=color:#66d9ef>extends</span> StateNotifier<span style=color:#f92672>&lt;</span>AsyncValue<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Dream<span style=color:#f92672>&gt;&gt;&gt;</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> SupabaseService _supabaseService;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  DreamNotifier(<span style=color:#66d9ef>this</span>._supabaseService) <span style=color:#f92672>:</span> <span style=color:#66d9ef>super</span>(<span style=color:#66d9ef>const</span> AsyncValue.loading()) {
-</span></span><span style=display:flex><span>    loadDreams();
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  Future<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>void</span><span style=color:#f92672>&gt;</span> loadDreams() <span style=color:#66d9ef>async</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>      state <span style=color:#f92672>=</span> <span style=color:#66d9ef>const</span> AsyncValue.loading();
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>final</span> dreams <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> _supabaseService.getDreams();
-</span></span><span style=display:flex><span>      state <span style=color:#f92672>=</span> AsyncValue.data(dreams);
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (error, stackTrace) {
-</span></span><span style=display:flex><span>      state <span style=color:#f92672>=</span> AsyncValue.error(error, stackTrace);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  Future<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>void</span><span style=color:#f92672>&gt;</span> addDream(Dream dream) <span style=color:#66d9ef>async</span> {
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// Optimistic updates for better UX
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    state.whenData((dreams) {
-</span></span><span style=display:flex><span>      state <span style=color:#f92672>=</span> AsyncValue.data([dream, ...dreams]);
-</span></span><span style=display:flex><span>    });
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>await</span> _supabaseService.insertDream(dream);
-</span></span><span style=display:flex><span>      loadDreams(); <span style=color:#75715e>// Refresh from server
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    } <span style=color:#66d9ef>catch</span> (error) {
-</span></span><span style=display:flex><span>      <span style=color:#75715e>// Rollback on error
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      loadDreams();
-</span></span><span style=display:flex><span>      rethrow;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=modern-ui-with-custom-theming>Modern UI with Custom Theming</h3><p>The app features a carefully crafted design system:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AppTheme</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>const</span> dreamPurple <span style=color:#f92672>=</span> Color(<span style=color:#ae81ff>0xFF6B46C1</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>const</span> dreamCyan <span style=color:#f92672>=</span> Color(<span style=color:#ae81ff>0xFF06B6D4</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>const</span> dreamNight <span style=color:#f92672>=</span> Color(<span style=color:#ae81ff>0xFF0F172A</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>static</span> ThemeData <span style=color:#66d9ef>get</span> lightTheme <span style=color:#f92672>=&gt;</span> ThemeData(
-</span></span><span style=display:flex><span>    useMaterial3: <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    colorScheme: ColorScheme.fromSeed(
-</span></span><span style=display:flex><span>      seedColor: dreamPurple,
-</span></span><span style=display:flex><span>      brightness: Brightness.light,
-</span></span><span style=display:flex><span>    ),
-</span></span><span style=display:flex><span>    cardTheme: CardTheme(
-</span></span><span style=display:flex><span>      elevation: <span style=color:#ae81ff>2</span>,
-</span></span><span style=display:flex><span>      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(<span style=color:#ae81ff>16</span>)),
-</span></span><span style=display:flex><span>    ),
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=performance-optimizations>Performance Optimizations</h3><p>Learning from my telecom experience with large-scale systems:</p><ol><li><strong>Lazy Loading</strong>: Dreams load on-demand with pagination</li><li><strong>Image Optimization</strong>: Lottie animations instead of heavy GIFs</li><li><strong>State Persistence</strong>: User preferences saved locally</li><li><strong>Offline Support</strong>: Core functionality works without internet</li><li><strong>Memory Management</strong>: Proper disposal of resources and listeners</li></ol><h2 id=the-ai-analysis-in-action>The AI Analysis in Action</h2><p>Here&rsquo;s what makes the AI system special:</p><h3 id=prompt-engineering>Prompt Engineering</h3><p>I spent considerable time optimizing the AI prompts for cost and accuracy:</p><pre tabindex=0><code>You are a professional dream analyst. Analyze this dream in exactly 2-3 sentences.
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/rice-logo.png type="image/gif">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+  
+
+
+<meta property="og:url" content="https://rizpur.com/projects/somnia/">
+  <meta property="og:site_name" content="RizPur">
+  <meta property="og:title" content="Somnia: AI-Powered Dream Journal">
+  <meta property="og:description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2024-09-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-09-20T00:00:00+00:00">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Dart">
+    <meta property="article:tag" content="AI/ML">
+    <meta property="article:tag" content="Supabase">
+    <meta property="article:tag" content="Mobile Development">
+    <meta property="article:tag" content="Dream Analysis">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Somnia: AI-Powered Dream Journal">
+  <meta name="twitter:description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization">
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --text-link-color: #007bff;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --text-link-color-dark: #ffffff;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        height: 0px;
+        width: 8px;
+        background-color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #b0b0b0;
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+
+<link rel="stylesheet" href="/css/custom.css" media="all">
+
+
+<meta name="description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
+
+
+  
+  
+
+  <title>
+Somnia: AI-Powered Dream Journal | RizPur
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+
+
+<header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/rice-logo.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                RizPur
+                
+            </a>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Ctrl &#43; k to Search...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Ctrl &#43; k to Search...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#experience"
+                            aria-label="experience">
+                            Experience
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#projects"
+                            aria-label="projects">
+                            Projects
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/blogs" title="Tech Notes &amp; Life Logs">
+                            
+                            Blogs
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Somnia: AI-Powered Dream Journal</h1>
+            <div class="text-center">
+              
+                Joel Brown
+                <small>|</small>
+              
+              Sep 20, 2024
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/images/projects/somnia/new_catlogov2.png" alt="Somnia: AI-Powered Dream Journal">
+          </div>
+          
+          <article class="page-content  p-2">
+          <h1 id="somnia-when-dreams-meet-ai">Somnia: When Dreams Meet AI</h1>
+<p>Ever wondered what your dreams actually mean? As a 27-year-old engineering student fascinated by the intersection of AI and human psychology, I built Somnia - a modern Flutter dream journal that uses AI to unlock the hidden patterns in your subconscious mind.</p>
+<p>This isn&rsquo;t just another note-taking app. It&rsquo;s a complete system that combines dream logging, AI-powered analysis, and freemium monetization into a polished mobile experience.</p>
+<h2 id="the-problem-i-wanted-to-solve">The Problem I Wanted to Solve</h2>
+<p>During my time at Digicel, I learned the value of data analysis and pattern recognition in network systems. I got curious: what if we could apply similar analytical approaches to something as personal and mysterious as dreams?</p>
+<p>Traditional dream journals are just text dumps. You write, you forget, you never really understand the patterns. I wanted something smarter - an app that could:</p>
+<ul>
+<li>Track dreams with rich metadata (mood, lucidity, themes)</li>
+<li>Analyze patterns using AI</li>
+<li>Provide actionable insights for lucid dreaming</li>
+<li>Actually help users understand their subconscious minds</li>
+</ul>
+<div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+  <div style="text-align: center; flex: 1; max-width: 300px;">
+    <img src="/images/projects/somnia/Screenshot_Onboarding.png" alt="Welcome Screen" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <p style="margin-top: 10px;"><strong>Welcome Screen</strong></p>
+  </div>
+  <div style="text-align: center; flex: 1; max-width: 300px;">
+    <img src="/images/projects/somnia/Screenshot_Stats.png" alt="Insights Dashboard" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <p style="margin-top: 10px;"><strong>Insights Dashboard</strong></p>
+  </div>
+</div>
+<h2 id="the-complete-system-architecture">The Complete System Architecture</h2>
+<h3 id="frontend-modern-flutter-with-riverpod">Frontend: Modern Flutter with Riverpod</h3>
+<p>Somnia is built with Flutter, using the latest Material Design 3 principles and sophisticated state management:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// Clean, type-safe state management with Riverpod
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">final</span> dreamProvider <span style="color:#f92672">=</span> StateNotifierProvider<span style="color:#f92672">&lt;</span>DreamNotifier, AsyncValue<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Dream<span style="color:#f92672">&gt;&gt;&gt;</span>(
+</span></span><span style="display:flex;"><span>  (ref) <span style="color:#f92672">=&gt;</span> DreamNotifier(ref.read(supabaseServiceProvider))
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Real-time UI updates with proper loading states
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DreamListScreen</span> <span style="color:#66d9ef">extends</span> ConsumerWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context, WidgetRef ref) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> dreamsAsync <span style="color:#f92672">=</span> ref.watch(dreamProvider);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dreamsAsync.when(
+</span></span><span style="display:flex;"><span>      loading: () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">const</span> LottieLoadingWidget(),
+</span></span><span style="display:flex;"><span>      error: (error, stack) <span style="color:#f92672">=&gt;</span> ErrorWidget(error.toString()),
+</span></span><span style="display:flex;"><span>      data: (dreams) <span style="color:#f92672">=&gt;</span> DreamListView(dreams: dreams),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Material Design 3</strong> with custom dream-themed color palette</li>
+<li><strong>Riverpod state management</strong> for reactive UI updates</li>
+<li><strong>Lottie animations</strong> for smooth loading states</li>
+<li><strong>Responsive design</strong> that works across different screen sizes</li>
+</ul>
+<h3 id="backend-supabase-with-edge-functions">Backend: Supabase with Edge Functions</h3>
+<p>Instead of building a custom backend, I leveraged Supabase for maximum efficiency:</p>
+<p><strong>Database Schema:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Core dreams table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> dreams (
+</span></span><span style="display:flex;"><span>  id UUID <span style="color:#66d9ef">DEFAULT</span> gen_random_uuid() <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>  user_id UUID <span style="color:#66d9ef">REFERENCES</span> auth.users(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>  title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  dream_date DATE <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  mood_rating INTEGER, <span style="color:#75715e">-- 3, 6, or 9 (sad, neutral, happy)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  is_lucid BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>  tags TEXT[],
+</span></span><span style="display:flex;"><span>  created_at <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">DEFAULT</span> NOW()
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- AI analysis results
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> dream_analyses (
+</span></span><span style="display:flex;"><span>  id UUID <span style="color:#66d9ef">DEFAULT</span> gen_random_uuid() <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>  dream_id UUID <span style="color:#66d9ef">REFERENCES</span> dreams(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>  user_id UUID <span style="color:#66d9ef">REFERENCES</span> auth.users(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>  analysis_text TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  insights JSONB <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#75715e">-- Themes, emotions, symbols, etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  model_used TEXT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;gpt-3.5-turbo&#39;</span>,
+</span></span><span style="display:flex;"><span>  confidence_score DECIMAL(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">85</span>,
+</span></span><span style="display:flex;"><span>  credits_consumed INTEGER <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  created_at <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">DEFAULT</span> NOW()
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="ai-analysis-openai-edge-functions">AI Analysis: OpenAI Edge Functions</h3>
+<p>The real magic happens in the AI analysis system. I deployed a Supabase Edge Function that integrates with OpenAI:</p>
+<p><strong>Edge Function Deployment:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// supabase/functions/analyze-dream/index.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">serve</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;https://deno.land/std@0.168.0/http/server.ts&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createClient</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;https://esm.sh/@supabase/supabase-js@2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">serve</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">dreamText</span>, <span style="color:#a6e22e">userId</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Check user credits and subscription
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">supabase</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">from</span>(<span style="color:#e6db74">&#39;user_profiles&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;subscription_tier, credits_remaining&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">eq</span>(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#a6e22e">userId</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">single</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">credits_remaining</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">subscription_tier</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;free&#39;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Response</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Insufficient credits&#39;</span>
+</span></span><span style="display:flex;"><span>    }), { <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">402</span> })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Analyze with OpenAI
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">analysis</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">openai</span>.<span style="color:#a6e22e">chat</span>.<span style="color:#a6e22e">completions</span>.<span style="color:#a6e22e">create</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">model</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">messages</span><span style="color:#f92672">:</span> [{
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;You are a professional dream analyst. Provide insights about themes, emotions, symbols, and lucidity probability.&#34;</span>
+</span></span><span style="display:flex;"><span>    }, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">dreamText</span>
+</span></span><span style="display:flex;"><span>    }],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">max_tokens</span>: <span style="color:#66d9ef">200</span> <span style="color:#75715e">// Cost optimization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Store results and update credits
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ... implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span></code></pre></div><h2 id="smart-features-that-actually-work">Smart Features That Actually Work</h2>
+<h3 id="1-intelligent-dream-logging">1. Intelligent Dream Logging</h3>
+<p>The app goes beyond basic text entry:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dream</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> content;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> DateTime dreamDate;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">?</span> moodRating; <span style="color:#75715e">// 3 (sad), 6 (neutral), 9 (happy)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> isLucid;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> tags;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> hasAiAnalysis;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span><span style="color:#f92672">?</span> aiAnalysisText;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Auto-generates titles if user doesn&#39;t provide one
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">String</span> <span style="color:#66d9ef">get</span> displayTitle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (title.trim().isNotEmpty) <span style="color:#66d9ef">return</span> title;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> DreamTitleGenerator.generateTitle(content);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="2-ai-powered-analysis-system">2. AI-Powered Analysis System</h3>
+<p>Each dream can be analyzed for:</p>
+<ul>
+<li><strong>Themes</strong>: Recurring patterns (flying, water, people)</li>
+<li><strong>Emotions</strong>: Underlying emotional content</li>
+<li><strong>Symbols</strong>: Psychological meanings of dream elements</li>
+<li><strong>Lucidity Probability</strong>: Likelihood the dream was lucid</li>
+<li><strong>Mood Correlation</strong>: How the dream relates to daily mood</li>
+<li><strong>Recommendations</strong>: Personalized tips for lucid dreaming</li>
+</ul>
+<h3 id="3-freemium-business-model">3. Freemium Business Model</h3>
+<p>I implemented a complete freemium system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSubscription</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> subscriptionTier; <span style="color:#75715e">// &#39;free&#39;, &#39;premium&#39;, &#39;ultra&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> creditsRemaining;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> DateTime<span style="color:#f92672">?</span> premiumExpiresAt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">get</span> canAnalyzeDream <span style="color:#f92672">=&gt;</span> isPremium <span style="color:#f92672">||</span> creditsRemaining <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> monthlyAnalysisLimit {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (subscriptionTier) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;free&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;premium&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;ultra&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#75715e">// Unlimited
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Business Logic:</strong></p>
+<ul>
+<li><strong>Free Tier</strong>: 10 AI analyses per month</li>
+<li><strong>Premium</strong>: 50 analyses + advanced insights</li>
+<li><strong>Ultra</strong>: Unlimited + priority processing</li>
+<li><strong>Cost per analysis</strong>: ~$0.001 (highly profitable)</li>
+</ul>
+<h2 id="technical-deep-dive">Technical Deep Dive</h2>
+<h3 id="state-management-with-riverpod">State Management with Riverpod</h3>
+<p>Coming from my network engineering background, I appreciate robust state management. Riverpod provides exactly that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DreamNotifier</span> <span style="color:#66d9ef">extends</span> StateNotifier<span style="color:#f92672">&lt;</span>AsyncValue<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Dream<span style="color:#f92672">&gt;&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> SupabaseService _supabaseService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  DreamNotifier(<span style="color:#66d9ef">this</span>._supabaseService) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(<span style="color:#66d9ef">const</span> AsyncValue.loading()) {
+</span></span><span style="display:flex;"><span>    loadDreams();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> loadDreams() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      state <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> AsyncValue.loading();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">final</span> dreams <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> _supabaseService.getDreams();
+</span></span><span style="display:flex;"><span>      state <span style="color:#f92672">=</span> AsyncValue.data(dreams);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (error, stackTrace) {
+</span></span><span style="display:flex;"><span>      state <span style="color:#f92672">=</span> AsyncValue.error(error, stackTrace);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> addDream(Dream dream) <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Optimistic updates for better UX
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    state.whenData((dreams) {
+</span></span><span style="display:flex;"><span>      state <span style="color:#f92672">=</span> AsyncValue.data([dream, ...dreams]);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> _supabaseService.insertDream(dream);
+</span></span><span style="display:flex;"><span>      loadDreams(); <span style="color:#75715e">// Refresh from server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">catch</span> (error) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Rollback on error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      loadDreams();
+</span></span><span style="display:flex;"><span>      rethrow;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="modern-ui-with-custom-theming">Modern UI with Custom Theming</h3>
+<p>The app features a carefully crafted design system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppTheme</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> dreamPurple <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0xFF6B46C1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> dreamCyan <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0xFF06B6D4</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> dreamNight <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0xFF0F172A</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> ThemeData <span style="color:#66d9ef">get</span> lightTheme <span style="color:#f92672">=&gt;</span> ThemeData(
+</span></span><span style="display:flex;"><span>    useMaterial3: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    colorScheme: ColorScheme.fromSeed(
+</span></span><span style="display:flex;"><span>      seedColor: dreamPurple,
+</span></span><span style="display:flex;"><span>      brightness: Brightness.light,
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>    cardTheme: CardTheme(
+</span></span><span style="display:flex;"><span>      elevation: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(<span style="color:#ae81ff">16</span>)),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="performance-optimizations">Performance Optimizations</h3>
+<p>Learning from my telecom experience with large-scale systems:</p>
+<ol>
+<li><strong>Lazy Loading</strong>: Dreams load on-demand with pagination</li>
+<li><strong>Image Optimization</strong>: Lottie animations instead of heavy GIFs</li>
+<li><strong>State Persistence</strong>: User preferences saved locally</li>
+<li><strong>Offline Support</strong>: Core functionality works without internet</li>
+<li><strong>Memory Management</strong>: Proper disposal of resources and listeners</li>
+</ol>
+<h2 id="the-ai-analysis-in-action">The AI Analysis in Action</h2>
+<p>Here&rsquo;s what makes the AI system special:</p>
+<h3 id="prompt-engineering">Prompt Engineering</h3>
+<p>I spent considerable time optimizing the AI prompts for cost and accuracy:</p>
+<pre tabindex="0"><code>You are a professional dream analyst. Analyze this dream in exactly 2-3 sentences.
 
 Then provide:
 - Themes: [list of 2-4 main themes]
@@ -176,47 +560,701 @@ Then provide:
 Be concise but insightful. Focus on psychological accuracy.
 
 Dream: [USER_DREAM_TEXT]
-</code></pre><h3 id=cost-optimization>Cost Optimization</h3><ul><li><strong>Token Limit</strong>: 200 tokens max per analysis (~$0.001)</li><li><strong>Model Selection</strong>: GPT-3.5-turbo for cost efficiency</li><li><strong>Batch Processing</strong>: Multiple dreams analyzed together for premium users</li><li><strong>Smart Caching</strong>: Similar dreams get cached responses</li></ul><h2 id=real-world-usage--impact>Real-World Usage & Impact</h2><p>Since deploying the beta:</p><h3 id=user-engagement>User Engagement</h3><ul><li><strong>Average Session</strong>: 3.2 minutes (perfect for dream logging)</li><li><strong>Return Rate</strong>: 67% weekly retention (better than most journaling apps)</li><li><strong>Analysis Usage</strong>: 78% of users analyze at least one dream</li></ul><h3 id=business-metrics>Business Metrics</h3><ul><li><strong>Conversion Rate</strong>: 12% free → premium conversion</li><li><strong>Monthly Revenue Potential</strong>: $500-2000 at scale</li><li><strong>Unit Economics</strong>: 85% profit margin on AI analyses</li></ul><h3 id=user-feedback>User Feedback</h3><p><em>&ldquo;Finally, an app that actually helps me understand my dreams instead of just storing them.&rdquo;</em></p><p><em>&ldquo;The AI analysis is surprisingly accurate. It picked up on themes I didn&rsquo;t even notice.&rdquo;</em></p><h2 id=technical-challenges-solved>Technical Challenges Solved</h2><h3 id=1-real-time-data-sync>1. Real-Time Data Sync</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#75715e>// Supabase real-time subscriptions
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>final</span> subscription <span style=color:#f92672>=</span> supabase
-</span></span><span style=display:flex><span>  .from(<span style=color:#e6db74>&#39;dreams&#39;</span>)
-</span></span><span style=display:flex><span>  .stream(primaryKey: [<span style=color:#e6db74>&#39;id&#39;</span>])
-</span></span><span style=display:flex><span>  .eq(<span style=color:#e6db74>&#39;user_id&#39;</span>, userId)
-</span></span><span style=display:flex><span>  .listen((data) {
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// Update UI in real-time when data changes
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    ref.read(dreamProvider.notifier).updateFromStream(data);
-</span></span><span style=display:flex><span>  });
-</span></span></code></pre></div><h3 id=2-offline-first-architecture>2. Offline-First Architecture</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>OfflineDreamStorage</span> {
-</span></span><span style=display:flex><span>  Future<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>void</span><span style=color:#f92672>&gt;</span> saveOfflineDream(Dream dream) <span style=color:#66d9ef>async</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>final</span> prefs <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> SharedPreferences.getInstance();
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>final</span> offlineDreams <span style=color:#f92672>=</span> getOfflineDreams();
-</span></span><span style=display:flex><span>    offlineDreams.add(dream);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>await</span> prefs.setString(<span style=color:#e6db74>&#39;offline_dreams&#39;</span>, jsonEncode(offlineDreams));
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  Future<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>void</span><span style=color:#f92672>&gt;</span> syncOfflineDreams() <span style=color:#66d9ef>async</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>final</span> offlineDreams <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> getOfflineDreams();
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>final</span> dream <span style=color:#66d9ef>in</span> offlineDreams) {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>await</span> supabaseService.insertDream(dream);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>await</span> clearOfflineDreams();
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=3-complex-json-handling>3. Complex JSON Handling</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DreamAnalysis</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>final</span> DreamInsights insights;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>factory</span> DreamAnalysis.fromJson(Map<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>String</span>, <span style=color:#66d9ef>dynamic</span><span style=color:#f92672>&gt;</span> json) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> DreamAnalysis(
-</span></span><span style=display:flex><span>      insights: DreamInsights.fromJson(json[<span style=color:#e6db74>&#39;insights&#39;</span>]),
-</span></span><span style=display:flex><span>      <span style=color:#75715e>// ... other fields
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    );
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// No code generation needed - clean manual serialization
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
-</span></span></code></pre></div><h2 id=what-i-learned-building-this>What I Learned Building This</h2><h3 id=1-mobile-development-maturity>1. Mobile Development Maturity</h3><p>Flutter has come a long way. The developer experience with hot reload, the widget system, and package ecosystem made complex features surprisingly manageable.</p><h3 id=2-ai-integration-reality>2. AI Integration Reality</h3><p>The hype around AI is real, but the implementation details matter. Cost optimization, prompt engineering, and error handling are crucial for production apps.</p><h3 id=3-freemium-business-models>3. Freemium Business Models</h3><p>Users are willing to pay for AI-powered insights, but the free tier needs to provide genuine value. The conversion funnel is all about demonstrating value before asking for payment.</p><h3 id=4-state-management-evolution>4. State Management Evolution</h3><p>Riverpod feels like the future of Flutter state management. It&rsquo;s more complex than Provider but scales beautifully for real applications.</p><h2 id=development-stats>Development Stats</h2><ul><li><strong>Development Time</strong>: 3 months (part-time while studying)</li><li><strong>Lines of Code</strong>: ~5,000 Dart + 500 TypeScript (Edge Functions)</li><li><strong>Dependencies</strong>: 15 packages (kept lean)</li><li><strong>Test Coverage</strong>: 67% (ongoing improvement)</li><li><strong>Platforms</strong>: Android, iOS, Web ready</li></ul><h2 id=future-roadmap>Future Roadmap</h2><h3 id=phase-1-enhanced-ai-features>Phase 1: Enhanced AI Features</h3><ul><li><strong>Dream Prediction</strong>: ML models predicting likely dream themes</li><li><strong>Personalization</strong>: AI that learns individual dream patterns</li><li><strong>Sleep Integration</strong>: Correlation with sleep tracking data</li></ul><h3 id=phase-2-social-features>Phase 2: Social Features</h3><ul><li><strong>Anonymous Sharing</strong>: Community insights without privacy loss</li><li><strong>Dream Challenges</strong>: Gamified lucid dreaming goals</li><li><strong>Expert Analysis</strong>: Connect with certified dream therapists</li></ul><h3 id=phase-3-advanced-analytics>Phase 3: Advanced Analytics</h3><ul><li><strong>Pattern Recognition</strong>: Long-term trend analysis</li><li><strong>Mood Correlation</strong>: Integration with mental health tracking</li><li><strong>Custom Insights</strong>: Personalized dashboard with actionable recommendations</li></ul><h2 id=the-tech-stack-that-works>The Tech Stack That Works</h2><p><strong>Frontend:</strong></p><ul><li>Flutter 3.8+ with Material Design 3</li><li>Riverpod for state management</li><li>Lottie for animations</li><li>SharedPreferences for local storage</li></ul><p><strong>Backend:</strong></p><ul><li>Supabase (PostgreSQL + Auth + Edge Functions)</li><li>OpenAI GPT-3.5-turbo for analysis</li><li>Row Level Security for data privacy</li></ul><p><strong>DevOps:</strong></p><ul><li>GitHub Actions for CI/CD</li><li>Automated testing and deployment</li><li>Environment-based configuration</li></ul><h2 id=why-this-project-matters>Why This Project Matters</h2><p>Somnia isn&rsquo;t just a portfolio piece - it&rsquo;s a working product that solves real problems. It demonstrates:</p><ol><li><strong>Full-Stack Mobile Development</strong>: End-to-end Flutter application with backend integration</li><li><strong>AI/ML Integration</strong>: Practical application of LLMs with cost optimization</li><li><strong>Business Model Implementation</strong>: Complete freemium system with subscription management</li><li><strong>Modern Architecture</strong>: Clean code practices and scalable patterns</li><li><strong>User-Centered Design</strong>: Solving actual user problems with thoughtful UX</li></ol><p>As an engineering student preparing for my internship in 2026, this project showcases my ability to take complex technical concepts and turn them into polished, user-facing applications that people actually want to use.</p><p>The intersection of AI, mobile development, and human psychology fascinates me - and Somnia proves that with the right technical approach, you can build products that genuinely enhance people&rsquo;s understanding of themselves.</p><hr><p><em>Somnia is currently in beta testing. The full source code demonstrates advanced Flutter patterns, AI integration, and production-ready architecture. Contact me if you&rsquo;d like to discuss the technical implementation or explore collaboration opportunities.</em></p></article></div></div><div class="col-sm-12 col-md-12 col-lg-3"><div id=stickySideBar class=sticky-sidebar><aside class=toc><h5>Table Of Contents</h5><div class=toc-content><nav id=TableOfContents><ul><li><a href=#the-problem-i-wanted-to-solve>The Problem I Wanted to Solve</a></li><li><a href=#the-complete-system-architecture>The Complete System Architecture</a><ul><li><a href=#frontend-modern-flutter-with-riverpod>Frontend: Modern Flutter with Riverpod</a></li><li><a href=#backend-supabase-with-edge-functions>Backend: Supabase with Edge Functions</a></li><li><a href=#ai-analysis-openai-edge-functions>AI Analysis: OpenAI Edge Functions</a></li></ul></li><li><a href=#smart-features-that-actually-work>Smart Features That Actually Work</a><ul><li><a href=#1-intelligent-dream-logging>1. Intelligent Dream Logging</a></li><li><a href=#2-ai-powered-analysis-system>2. AI-Powered Analysis System</a></li><li><a href=#3-freemium-business-model>3. Freemium Business Model</a></li></ul></li><li><a href=#technical-deep-dive>Technical Deep Dive</a><ul><li><a href=#state-management-with-riverpod>State Management with Riverpod</a></li><li><a href=#modern-ui-with-custom-theming>Modern UI with Custom Theming</a></li><li><a href=#performance-optimizations>Performance Optimizations</a></li></ul></li><li><a href=#the-ai-analysis-in-action>The AI Analysis in Action</a><ul><li><a href=#prompt-engineering>Prompt Engineering</a></li><li><a href=#cost-optimization>Cost Optimization</a></li></ul></li><li><a href=#real-world-usage--impact>Real-World Usage & Impact</a><ul><li><a href=#user-engagement>User Engagement</a></li><li><a href=#business-metrics>Business Metrics</a></li><li><a href=#user-feedback>User Feedback</a></li></ul></li><li><a href=#technical-challenges-solved>Technical Challenges Solved</a><ul><li><a href=#1-real-time-data-sync>1. Real-Time Data Sync</a></li><li><a href=#2-offline-first-architecture>2. Offline-First Architecture</a></li><li><a href=#3-complex-json-handling>3. Complex JSON Handling</a></li></ul></li><li><a href=#what-i-learned-building-this>What I Learned Building This</a><ul><li><a href=#1-mobile-development-maturity>1. Mobile Development Maturity</a></li><li><a href=#2-ai-integration-reality>2. AI Integration Reality</a></li><li><a href=#3-freemium-business-models>3. Freemium Business Models</a></li><li><a href=#4-state-management-evolution>4. State Management Evolution</a></li></ul></li><li><a href=#development-stats>Development Stats</a></li><li><a href=#future-roadmap>Future Roadmap</a><ul><li><a href=#phase-1-enhanced-ai-features>Phase 1: Enhanced AI Features</a></li><li><a href=#phase-2-social-features>Phase 2: Social Features</a></li><li><a href=#phase-3-advanced-analytics>Phase 3: Advanced Analytics</a></li></ul></li><li><a href=#the-tech-stack-that-works>The Tech Stack That Works</a></li><li><a href=#why-this-project-matters>Why This Project Matters</a></li></ul></nav></div></aside><aside class=tags><h5>Tags</h5><ul class="tags-ul list-unstyled list-inline"><li class=list-inline-item><a href=https://rizpur.com/tags/flutter target=_blank>Flutter</a></li><li class=list-inline-item><a href=https://rizpur.com/tags/dart target=_blank>Dart</a></li><li class=list-inline-item><a href=https://rizpur.com/tags/ai/ml target=_blank>AI/ML</a></li><li class=list-inline-item><a href=https://rizpur.com/tags/supabase target=_blank>Supabase</a></li><li class=list-inline-item><a href=https://rizpur.com/tags/mobile-development target=_blank>Mobile Development</a></li><li class=list-inline-item><a href=https://rizpur.com/tags/dream-analysis target=_blank>Dream Analysis</a></li></ul></aside><aside class=social><h5>Social</h5><div class=social-content><ul class=list-inline><li class="list-inline-item text-center"><a target=_blank href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f"><i class="fab fa-linkedin"></i></a></li><li class="list-inline-item text-center"><a target=_blank href="https://twitter.com/share?text=Somnia%3a%20AI-Powered%20Dream%20Journal&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f"><i class="fab fa-twitter"></i></a></li><li class="list-inline-item text-center"><a target=_blank href="https://api.whatsapp.com/send?text=Somnia%3a%20AI-Powered%20Dream%20Journal: https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f"><i class="fab fa-whatsapp"></i></a></li><li class="list-inline-item text-center"><a target=_blank href='mailto:?subject=Somnia%3a%20AI-Powered%20Dream%20Journal&amp;body=Check%20out%20this%20site https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f'><i class="fa fa-envelope"></i></a></li></ul></div></aside></div></div></div><div class=row><div class="col-sm-12 col-md-12 col-lg-9 p-4"></div></div></div><button class="p-2 px-3" onclick=topFunction() id=topScroll>
-<i class="fas fa-angle-up"></i></button></section><div class=progress><div id=scroll-progress-bar class=progress-bar role=progressbar aria-valuenow=0 aria-valuemin=0 aria-valuemax=100></div></div><script src=/js/scrollProgressBar.js></script><script>var topScroll=document.getElementById("topScroll");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?topScroll.style.display="block":topScroll.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}let stickySideBarElem=document.getElementById("stickySideBar"),stickyNavBar=!1;if(stickyNavBar){let e=document.getElementById("profileHeader"),t=e.offsetHeight+15;stickySideBarElem.style.top=t+"px"}else stickySideBarElem.style.top="50px"</script><script src=/js/readingTime.js></script></div><footer><div class="container py-3" id=recent-posts><div class="h3 text-center text-secondary py-3">Latest Posts</div><div class="row justify-content-center"><div class="col-lg-4 col-md-6 pt-2"><div class="card h-100"><div class=card-header><a href=/blogs/my-google-cli-workflow/><img src=/images/blogs/cli-workflow/terminal-setup.png class=card-img-top alt="My Google CLI Workflow"></a></div><div class="card-body bg-transparent p-3 shadow-sm"><a href=/blogs/my-google-cli-workflow/ class="primary-font card-title"><h5 class="card-title bg-transparent" title="My Google CLI Workflow">My Google CLI Workflow</h5></a><div class="card-text secondary-font"><p>My Google CLI Workflow: From Terminal to Phone in Perfect Sync You know that feeling when you discover a workflow that just clicks? That&rsquo;s exactly what happened when I built my Google CLI automation system. As a 27-year-old engineering student who absolutely loves automating everything (thanks …</p></div></div><div class="mt-auto card-footer"><span class=float-start>Nov 20, 2024</span>
-<a href=/blogs/my-google-cli-workflow/ class="float-end btn btn-outline-info btn-sm">Read</a></div></div></div><div class="col-lg-4 col-md-6 pt-2"><div class="card h-100"><div class=card-header><a href=/blogs/jamaica-history/><img src=/images/cranwata.jpg class=card-img-top alt="History of Jamaica"></a></div><div class="card-body bg-transparent p-3 shadow-sm"><a href=/blogs/jamaica-history/ class="primary-font card-title"><h5 class="card-title bg-transparent" title="History of Jamaica">History of Jamaica</h5></a><div class="card-text secondary-font"><p>In 2021, amid global challenges, I taught English in France to young minds from kindergarten (CP) to grade 5 (CM2). Their curiosity about Jamaica sparked an enchanting video project.
-Join this post to delve into our journey during unprecedented times. Through a crafted video, we embarked on a …</p></div></div><div class="mt-auto card-footer"><span class=float-start>Jul 3, 2021</span>
-<a href=/blogs/jamaica-history/ class="float-end btn btn-outline-info btn-sm">Read</a></div></div></div></div></div><div class="text-center pt-2"><span class=px-1><a href=https://github.com/RizPur aria-label=github><svg width="2.7em" height="2.7em" viewBox="0 0 1792 1792"><path id="footer-socialNetworks-github-svg-path" d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5T1376 1664h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105T1386 856q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27T578 459.5 492 446q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5T484 1274q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5H416q-119 0-203.5-84.5T128 1376V416q0-119 84.5-203.5T416 128h960q119 0 203.5 84.5T1664 416z"/></svg>
-</a></span><span class=px-1><a href=https://www.linkedin.com/in/joel-brown-b1696219b/ aria-label=linkedin><svg width="2.4em" height="2.4em" fill="#fff" aria-label="LinkedIn" viewBox="0 0 512 512"><rect width="512" height="512" fill="#0077b5" rx="15%"/><circle cx="142" cy="138" r="37"/><path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
-</a></span><a href=https://www.instagram.com/joikrr/ aria-label=instagram><svg viewBox="0 0 48 48" width="48" height="48"><radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"/><stop offset=".328" stop-color="#ff543f"/><stop offset=".348" stop-color="#fc5245"/><stop offset=".504" stop-color="#e64771"/><stop offset=".643" stop-color="#d53e91"/><stop offset=".761" stop-color="#cc39a4"/><stop offset=".841" stop-color="#c837ab"/></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma)" d="M34.017 41.99l-20 .019c-4.4.004-8.003-3.592-8.008-7.992l-.019-20c-.004-4.4 3.592-8.003 7.992-8.008l20-.019c4.4-.004 8.003 3.592 8.008 7.992l.019 20C42.014 38.383 38.417 41.986 34.017 41.99z"/><radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9"/><stop offset=".999" stop-color="#4168c9" stop-opacity="0"/></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb)" d="M34.017 41.99l-20 .019c-4.4.004-8.003-3.592-8.008-7.992l-.019-20c-.004-4.4 3.592-8.003 7.992-8.008l20-.019c4.4-.004 8.003 3.592 8.008 7.992l.019 20C42.014 38.383 38.417 41.986 34.017 41.99z"/><path fill="#fff" d="M24 31c-3.859.0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7zm0-12c-2.757.0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z"/><circle cx="31.5" cy="16.5" r="1.5" fill="#fff"/><path fill="#fff" d="M30 37H18c-3.859.0-7-3.14-7-7V18c0-3.86 3.141-7 7-7h12c3.859.0 7 3.14 7 7v12c0 3.86-3.141 7-7 7zM18 13c-2.757.0-5 2.243-5 5v12c0 2.757 2.243 5 5 5h12c2.757.0 5-2.243 5-5V18c0-2.757-2.243-5-5-5H18z"/></svg></a></div><div class="container py-4"><div class="row justify-content-center"><div class="col-md-4 text-center"><div class=pb-2><a href=https://rizpur.com/ title=RizPur><img alt="Footer logo" src=/rice-logo.png height=40px width=40px></a></div><div class="pb-3 text-secondary" style=font-size:.9rem><div style=font-size:1rem;margin-bottom:.25rem>一粒米，天地恩</div><div style=font-style:italic>One rice grain contains the grace of the Heavens and the Earth</div></div>&copy; 2025 All rights reserved</div></div></div></footer><script src=/bootstrap-5/js/bootstrap.bundle.min.js></script><script>document.body.className.includes("light")&&(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))});var tooltipTriggerList=[].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')),tooltipList=tooltipTriggerList.map(function(e){return new bootstrap.Tooltip(e)})</script><script src=/js/search.js></script><script src=/js/contact.js></script><section id=search-content class=py-2><div class=container id=search-results></div></section></body></html>
+</code></pre><h3 id="cost-optimization">Cost Optimization</h3>
+<ul>
+<li><strong>Token Limit</strong>: 200 tokens max per analysis (~$0.001)</li>
+<li><strong>Model Selection</strong>: GPT-3.5-turbo for cost efficiency</li>
+<li><strong>Batch Processing</strong>: Multiple dreams analyzed together for premium users</li>
+<li><strong>Smart Caching</strong>: Similar dreams get cached responses</li>
+</ul>
+<h2 id="technical-challenges-solved">Technical Challenges Solved</h2>
+<h3 id="1-real-time-data-sync">1. Real-Time Data Sync</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// Supabase real-time subscriptions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">final</span> subscription <span style="color:#f92672">=</span> supabase
+</span></span><span style="display:flex;"><span>  .from(<span style="color:#e6db74">&#39;dreams&#39;</span>)
+</span></span><span style="display:flex;"><span>  .stream(primaryKey: [<span style="color:#e6db74">&#39;id&#39;</span>])
+</span></span><span style="display:flex;"><span>  .eq(<span style="color:#e6db74">&#39;user_id&#39;</span>, userId)
+</span></span><span style="display:flex;"><span>  .listen((data) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Update UI in real-time when data changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ref.read(dreamProvider.notifier).updateFromStream(data);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><h3 id="2-offline-first-architecture">2. Offline-First Architecture</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OfflineDreamStorage</span> {
+</span></span><span style="display:flex;"><span>  Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> saveOfflineDream(Dream dream) <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> prefs <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> SharedPreferences.getInstance();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> offlineDreams <span style="color:#f92672">=</span> getOfflineDreams();
+</span></span><span style="display:flex;"><span>    offlineDreams.add(dream);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> prefs.setString(<span style="color:#e6db74">&#39;offline_dreams&#39;</span>, jsonEncode(offlineDreams));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> syncOfflineDreams() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> offlineDreams <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> getOfflineDreams();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">final</span> dream <span style="color:#66d9ef">in</span> offlineDreams) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> supabaseService.insertDream(dream);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> clearOfflineDreams();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="3-complex-json-handling">3. Complex JSON Handling</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DreamAnalysis</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> DreamInsights insights;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">factory</span> DreamAnalysis.fromJson(Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>, <span style="color:#66d9ef">dynamic</span><span style="color:#f92672">&gt;</span> json) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> DreamAnalysis(
+</span></span><span style="display:flex;"><span>      insights: DreamInsights.fromJson(json[<span style="color:#e6db74">&#39;insights&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ... other fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// No code generation needed - clean manual serialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="the-publishing--oauth-authentication-hell">The Publishing / OAuth Authentication Hell</h2>
+<p>Man.. getting the app approved on the Play Store is an entirely different beast from building it. I spent a solid week debugging Google Sign-In authentication issues that only appeared in production builds.</p>
+<h3 id="the-three-certificate-problem">The Three-Certificate Problem</h3>
+<p>Here&rsquo;s the thing about Android app signing that will absolutely wreck your deployment if you don&rsquo;t understand it:</p>
+<p><strong>Your app gets signed THREE different times:</strong></p>
+<ol>
+<li><strong>Debug builds</strong> (<code>flutter run</code>) → Signed with debug certificate</li>
+<li><strong>Local release builds</strong> (<code>flutter build apk --release</code>) → Signed with your upload certificate</li>
+<li><strong>Play Store downloads</strong> → Google re-signs with their App Signing certificate</li>
+</ol>
+<p>The critical realization: <strong>Even internal testing uses Google&rsquo;s certificate</strong>, not yours.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># What I thought was happening:</span>
+</span></span><span style="display:flex;"><span>flutter build appbundle → Upload to Play Store → Users download my signed app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What actually happens:</span>
+</span></span><span style="display:flex;"><span>flutter build appbundle → Upload to Play Store → Google strips my signature
+</span></span><span style="display:flex;"><span>→ Google re-signs with THEIR certificate → Users download Google-signed app
+</span></span></code></pre></div><h3 id="error-code-10-the-developers-nightmare">Error Code 10: The Developer&rsquo;s Nightmare</h3>
+<pre tabindex="0"><code>PlatformException(sign_in_failed, com.google.android.gms.common.api.ApiException: 10)
+</code></pre><p>This error code haunted me for days (freal). <code>ApiException: 10</code> means <code>DEVELOPER_ERROR</code> - Google&rsquo;s polite way of saying &ldquo;your OAuth configuration is wrong.&rdquo;</p>
+<p><strong>What was wrong:</strong></p>
+<ol>
+<li>I was using the <strong>Android OAuth client ID</strong> in my code instead of the <strong>Web client ID</strong></li>
+<li>I had registered my <strong>upload certificate</strong> SHA-1, but not the <strong>Play Store signing certificate</strong> SHA-1</li>
+</ol>
+<h3 id="the-client-id-confusion">The Client ID Confusion</h3>
+<p>This is the part that killed me dead bro. Google Sign-In requires different client IDs for different purposes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// WRONG - Using Android client ID (type 1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> webClientId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1027251168998-d74qj4ms7c3cepujnnv1g3a7ukgt9ast...&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CORRECT - Using Web client ID (type 3)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> webClientId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1027251168998-b3ith979iulja574ra6tc3vsvlq8fn6b...&#39;</span>;
+</span></span></code></pre></div><p>The <code>serverClientId</code> parameter needs your <strong>Web application client</strong> for backend authentication (Supabase). The Android client is matched <strong>automatically</strong> by your app&rsquo;s package name and certificate SHA-1.</p>
+<h3 id="hunting-down-sha-1-certificates">Hunting Down SHA-1 Certificates</h3>
+<p>I had to track down THREE different SHA-1 fingerprints:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Debug certificate (for development)</span>
+</span></span><span style="display:flex;"><span>keytool -list -v -alias androiddebugkey <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -keystore ~/.android/debug.keystore <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -storepass android | grep <span style="color:#e6db74">&#34;SHA1:&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># → 67:9A:B8:AE:35:1E:B1:A7:AA:B3:84:EF:84:CA:5B:2C:D8:5A:E4:0D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Upload certificate (for local release testing)</span>
+</span></span><span style="display:flex;"><span>keytool -list -v -keystore android/app/somnia-release-key.jks <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -alias somnia -storepass <span style="color:#e6db74">&#34;somnia2025!&#34;</span> | grep <span style="color:#e6db74">&#34;SHA1:&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># → AC:B8:FF:8D:1C:C6:42:A4:1B:B8:00:FD:85:A0:7A:48:F5:43:1F:A6</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Play Store signing certificate (the one that matters for production)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Only available in Play Console → App integrity</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># → D6:AB:49:45:FC:30:3A:15:A1:C3:E1:15:0C:1E:FA:11:51:B7:EC:8D</span>
+</span></span></code></pre></div><p>All three had to be registered in Firebase Console and have corresponding OAuth clients in Google Cloud Console.</p>
+<h3 id="production-debugging-without-console-logs">Production Debugging Without Console Logs</h3>
+<p>Here&rsquo;s another fun challenge: production builds don&rsquo;t show console logs. When beta testers reported that Google Sign-In &ldquo;just closes the window with no error,&rdquo; I had zero visibility into what was happening.</p>
+<p><strong>Solution: Persistent Error Logging</strong></p>
+<p>I built a custom error tracking system that saves errors to <code>SharedPreferences</code> and displays them in a debug dialog:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ErrorLogger</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> logError(<span style="color:#66d9ef">String</span> error, {<span style="color:#66d9ef">String</span><span style="color:#f92672">?</span> context}) <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> prefs <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> SharedPreferences.getInstance();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> errorLog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">=== ERROR LOG ===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Time: </span><span style="color:#e6db74">${</span>DateTime.now().toIso8601String()<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Context: </span><span style="color:#e6db74">${</span>context <span style="color:#f92672">??</span> <span style="color:#e6db74">&#39;Unknown&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Error: </span><span style="color:#e6db74">$</span>error<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">=================
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> prefs.setString(<span style="color:#e6db74">&#39;last_error_log&#39;</span>, errorLog);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// In the login screen - add a debug button
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Widget _buildDebugButton() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> TextButton.icon(
+</span></span><span style="display:flex;"><span>    onPressed: () <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">final</span> lastError <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> ErrorLogger.getLastError();
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Show error dialog that users can screenshot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      showErrorDialog(lastError);
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    icon: Icon(Icons.bug_report),
+</span></span><span style="display:flex;"><span>    label: Text(<span style="color:#e6db74">&#39;View Last Error (Debug)&#39;</span>),
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This let beta testers screenshot the actual error and send it to me. That&rsquo;s how I discovered the SHA-1 mismatch.</p>
+<h3 id="step-by-step-logging-in-production">Step-by-Step Logging in Production</h3>
+<p>Since I couldn&rsquo;t see console output, I logged every single step of the authentication flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> signInWithGoogle() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 1: Starting Google Sign-In&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> webClientId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1027251168998-b3ith979iulja574ra6tc3vsvlq8fn6b...&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 2: Clearing cache&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> GoogleSignIn().signOut();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 3: Creating GoogleSignIn instance&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> googleSignIn <span style="color:#f92672">=</span> GoogleSignIn(serverClientId: webClientId);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 4: Calling signIn()&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> googleUser <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> googleSignIn.signIn();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (googleUser <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 5: User cancelled&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;STEP 6: Got user: </span><span style="color:#e6db74">${</span>googleUser.email<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... rest of authentication flow
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">catch</span> (e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> ErrorLogger.logError(<span style="color:#e6db74">&#39;EXCEPTION: </span><span style="color:#e6db74">$</span>e<span style="color:#e6db74">&#39;</span>);
+</span></span><span style="display:flex;"><span>    rethrow;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This approach revealed that the flow was failing at &ldquo;STEP 4&rdquo; with <code>ApiException: 10</code> - pointing directly to the OAuth configuration.</p>
+<h3 id="the-fix-that-actually-worked">The Fix That Actually Worked</h3>
+<p>After a week of debugging, the solution was a three-step process:</p>
+<ol>
+<li><strong>Get the Play Store signing SHA-1</strong> from Play Console → App integrity</li>
+<li><strong>Create an Android OAuth client</strong> in Google Cloud Console with that SHA-1</li>
+<li><strong>Use the Web client ID</strong> in code (not the Android client)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// Final working configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> signInWithGoogle() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Web client ID for Supabase backend authentication
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> webClientId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1027251168998-b3ith979iulja574ra6tc3vsvlq8fn6b.apps.googleusercontent.com&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> GoogleSignIn googleSignIn <span style="color:#f92672">=</span> GoogleSignIn(
+</span></span><span style="display:flex;"><span>    serverClientId: webClientId, <span style="color:#75715e">// Web client for backend
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Android client auto-matched by package + SHA-1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="what-this-taught-me-about-mobile-development">What This Taught Me About Mobile Development</h3>
+<p><strong>The Production Reality Gap</strong>: Things that work perfectly in development can spectacularly fail in production due to signing, permissions, and platform-specific quirks you&rsquo;d never encounter locally.</p>
+<p><strong>Documentation Isn&rsquo;t Always Right</strong>: Google&rsquo;s documentation doesn&rsquo;t clearly explain the three-certificate system or the difference between Web and Android client IDs for hybrid authentication flows.</p>
+<p><strong>Build Your Own Debugging Tools</strong>: When platform limitations prevent normal debugging, you need creative solutions. The persistent error logging system saved this launch.</p>
+<p><strong>Testing Matrix Is Essential</strong>:</p>
+<pre tabindex="0"><code>✓ Debug mode (flutter run) → Works
+✓ USB install (flutter install --release) → Works
+✗ Play Store download → Fails
+
+Lesson: Test the ACTUAL distribution method early.
+</code></pre><p>This experience made me appreciate why companies have dedicated DevOps and release engineering teams. Getting from &ldquo;working on my machine&rdquo; to &ldquo;working for all users via the Play Store&rdquo; is a discipline unto itself.</p>
+<h2 id="what-i-learned-building-this">What I Learned Building This</h2>
+<h3 id="1-mobile-development-maturity">1. Mobile Development Maturity</h3>
+<p>Flutter has come a long way. The developer experience with hot reload, the widget system, and package ecosystem made complex features surprisingly manageable. But the gap between development and production deployment is still very real.</p>
+<h3 id="2-ai-integration-reality">2. AI Integration Reality</h3>
+<p>The hype around AI is real, but the implementation details matter. Cost optimization, prompt engineering, and error handling are crucial for production apps.</p>
+<h3 id="3-freemium-business-models">3. Freemium Business Models</h3>
+<p>Users are willing to pay for AI-powered insights, but the free tier needs to provide genuine value. The conversion funnel is all about demonstrating value before asking for payment.</p>
+<h3 id="4-state-management-evolution">4. State Management Evolution</h3>
+<p>Riverpod feels like the future of Flutter state management. It&rsquo;s more complex than Provider but scales beautifully for real applications.</p>
+<h2 id="development-stats">Development Stats</h2>
+<ul>
+<li><strong>Development Time</strong>: 3 months (part-time while studying)</li>
+<li><strong>Lines of Code</strong>: ~5,000 Dart + 500 TypeScript (Edge Functions)</li>
+<li><strong>Dependencies</strong>: 15 packages (kept lean)</li>
+<li><strong>Test Coverage</strong>: 67% (ongoing improvement)</li>
+<li><strong>Platforms</strong>: Android, iOS, Web ready</li>
+<li><strong>Debugging Time</strong>: 1 week for OAuth/publishing issues alone</li>
+<li><strong>App Versions</strong>: 11 releases to fix Google Sign-In authentication</li>
+<li><strong>Beta Testers</strong>: Internal testing track with OAuth debugging tools</li>
+</ul>
+<h2 id="future-roadmap">Future Roadmap</h2>
+<h3 id="phase-1-enhanced-ai-features">Phase 1: Enhanced AI Features</h3>
+<ul>
+<li><strong>Dream Prediction</strong>: ML models predicting likely dream themes</li>
+<li><strong>Personalization</strong>: AI that learns individual dream patterns</li>
+<li><strong>Sleep Integration</strong>: Correlation with sleep tracking data</li>
+</ul>
+<h3 id="phase-2-social-features">Phase 2: Social Features</h3>
+<ul>
+<li><strong>Anonymous Sharing</strong>: Community insights without privacy loss</li>
+<li><strong>Dream Challenges</strong>: Gamified lucid dreaming goals</li>
+<li><strong>Expert Analysis</strong>: Connect with certified dream therapists</li>
+</ul>
+<h3 id="phase-3-advanced-analytics">Phase 3: Advanced Analytics</h3>
+<ul>
+<li><strong>Pattern Recognition</strong>: Long-term trend analysis</li>
+<li><strong>Mood Correlation</strong>: Integration with mental health tracking</li>
+<li><strong>Custom Insights</strong>: Personalized dashboard with actionable recommendations</li>
+</ul>
+<h2 id="the-tech-stack-that-works">The Tech Stack That Works</h2>
+<p><strong>Frontend:</strong></p>
+<ul>
+<li>Flutter 3.8+ with Material Design 3</li>
+<li>Riverpod for state management</li>
+<li>Lottie for animations</li>
+<li>SharedPreferences for local storage</li>
+</ul>
+<p><strong>Backend:</strong></p>
+<ul>
+<li>Supabase (PostgreSQL + Auth + Edge Functions)</li>
+<li>OpenAI GPT-3.5-turbo for analysis</li>
+<li>Row Level Security for data privacy</li>
+</ul>
+<p><strong>DevOps:</strong></p>
+<ul>
+<li>GitHub Actions for CI/CD</li>
+<li>Automated testing and deployment</li>
+<li>Environment-based configuration</li>
+</ul>
+<h2 id="why-this-project-matters">Why This Project Matters</h2>
+<p>Somnia isn&rsquo;t just a portfolio piece - it&rsquo;s a working product that solves real problems. It demonstrates:</p>
+<ol>
+<li><strong>Full-Stack Mobile Development</strong>: End-to-end Flutter application with backend integration</li>
+<li><strong>AI/ML Integration</strong>: Practical application of LLMs with cost optimization</li>
+<li><strong>Business Model Implementation</strong>: Complete freemium system with subscription management</li>
+<li><strong>Modern Architecture</strong>: Clean code practices and scalable patterns</li>
+<li><strong>User-Centered Design</strong>: Solving actual user problems with thoughtful UX</li>
+</ol>
+<p>As an engineering student preparing for my internship in 2026, this project showcases my ability to take complex technical concepts and turn them into polished, user-facing applications that people actually want to use.</p>
+<p>The intersection of AI, mobile development, and human psychology fascinates me - and Somnia proves that with the right technical approach, you can build products that genuinely enhance people&rsquo;s understanding of themselves.</p>
+<hr>
+<h2 id="app-screenshots">App Screenshots</h2>
+<p>Here&rsquo;s what Somnia looks like in action:</p>
+<div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+  <div style="text-align: center; flex: 1; max-width: 300px;">
+    <img src="/images/projects/somnia/Screenshot_Dreamscreen.png" alt="Dream List Screen" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <p style="margin-top: 10px;"><strong>Dream List</strong> - Clean interface with mood indicators and AI badges</p>
+  </div>
+  <div style="text-align: center; flex: 1; max-width: 300px;">
+    <img src="/images/projects/somnia/Screenshot_CreateDream.png" alt="Create Dream Screen" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <p style="margin-top: 10px;"><strong>Create Dream</strong> - Simple dream logging with mood and lucidity tracking</p>
+  </div>
+</div>
+<h2 id="current-status--availability">Current Status &amp; Availability</h2>
+<p>After overcoming the OAuth authentication challenges, <strong>Somnia is now live on the Google Play Store</strong> in internal testing. The app successfully handles:</p>
+<ul>
+<li>✅ Google Sign-In authentication across all distribution channels</li>
+<li>✅ AI-powered dream analysis with freemium monetization</li>
+<li>✅ Real-time data synchronization with Supabase</li>
+<li>✅ Persistent error logging for production debugging</li>
+<li>✅ Multi-certificate signing for Play Store distribution</li>
+</ul>
+<p>The journey from &ldquo;working on my machine&rdquo; to &ldquo;working for beta testers&rdquo; taught me more about production mobile development than any tutorial could. This project demonstrates not just the ability to build features, but to troubleshoot and deploy them in the real world.</p>
+<p><strong>Technical Highlights:</strong></p>
+<ul>
+<li>Complete Flutter application with Riverpod state management</li>
+<li>Supabase backend with Edge Functions and PostgreSQL</li>
+<li>OpenAI integration with cost-optimized prompts</li>
+<li>OAuth 2.0 authentication with multiple signing certificates</li>
+<li>Production-grade error tracking and logging system</li>
+<li>Freemium business model with subscription management</li>
+</ul>
+<p><em>Full technical documentation available, including the complete OAuth troubleshooting guide. Contact me to discuss the implementation details or explore collaboration opportunities.</em></p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div id="stickySideBar" class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem-i-wanted-to-solve">The Problem I Wanted to Solve</a></li>
+    <li><a href="#the-complete-system-architecture">The Complete System Architecture</a>
+      <ul>
+        <li><a href="#frontend-modern-flutter-with-riverpod">Frontend: Modern Flutter with Riverpod</a></li>
+        <li><a href="#backend-supabase-with-edge-functions">Backend: Supabase with Edge Functions</a></li>
+        <li><a href="#ai-analysis-openai-edge-functions">AI Analysis: OpenAI Edge Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#smart-features-that-actually-work">Smart Features That Actually Work</a>
+      <ul>
+        <li><a href="#1-intelligent-dream-logging">1. Intelligent Dream Logging</a></li>
+        <li><a href="#2-ai-powered-analysis-system">2. AI-Powered Analysis System</a></li>
+        <li><a href="#3-freemium-business-model">3. Freemium Business Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#technical-deep-dive">Technical Deep Dive</a>
+      <ul>
+        <li><a href="#state-management-with-riverpod">State Management with Riverpod</a></li>
+        <li><a href="#modern-ui-with-custom-theming">Modern UI with Custom Theming</a></li>
+        <li><a href="#performance-optimizations">Performance Optimizations</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-ai-analysis-in-action">The AI Analysis in Action</a>
+      <ul>
+        <li><a href="#prompt-engineering">Prompt Engineering</a></li>
+        <li><a href="#cost-optimization">Cost Optimization</a></li>
+      </ul>
+    </li>
+    <li><a href="#technical-challenges-solved">Technical Challenges Solved</a>
+      <ul>
+        <li><a href="#1-real-time-data-sync">1. Real-Time Data Sync</a></li>
+        <li><a href="#2-offline-first-architecture">2. Offline-First Architecture</a></li>
+        <li><a href="#3-complex-json-handling">3. Complex JSON Handling</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-publishing--oauth-authentication-hell">The Publishing / OAuth Authentication Hell</a>
+      <ul>
+        <li><a href="#the-three-certificate-problem">The Three-Certificate Problem</a></li>
+        <li><a href="#error-code-10-the-developers-nightmare">Error Code 10: The Developer&rsquo;s Nightmare</a></li>
+        <li><a href="#the-client-id-confusion">The Client ID Confusion</a></li>
+        <li><a href="#hunting-down-sha-1-certificates">Hunting Down SHA-1 Certificates</a></li>
+        <li><a href="#production-debugging-without-console-logs">Production Debugging Without Console Logs</a></li>
+        <li><a href="#step-by-step-logging-in-production">Step-by-Step Logging in Production</a></li>
+        <li><a href="#the-fix-that-actually-worked">The Fix That Actually Worked</a></li>
+        <li><a href="#what-this-taught-me-about-mobile-development">What This Taught Me About Mobile Development</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-i-learned-building-this">What I Learned Building This</a>
+      <ul>
+        <li><a href="#1-mobile-development-maturity">1. Mobile Development Maturity</a></li>
+        <li><a href="#2-ai-integration-reality">2. AI Integration Reality</a></li>
+        <li><a href="#3-freemium-business-models">3. Freemium Business Models</a></li>
+        <li><a href="#4-state-management-evolution">4. State Management Evolution</a></li>
+      </ul>
+    </li>
+    <li><a href="#development-stats">Development Stats</a></li>
+    <li><a href="#future-roadmap">Future Roadmap</a>
+      <ul>
+        <li><a href="#phase-1-enhanced-ai-features">Phase 1: Enhanced AI Features</a></li>
+        <li><a href="#phase-2-social-features">Phase 2: Social Features</a></li>
+        <li><a href="#phase-3-advanced-analytics">Phase 3: Advanced Analytics</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-tech-stack-that-works">The Tech Stack That Works</a></li>
+    <li><a href="#why-this-project-matters">Why This Project Matters</a></li>
+    <li><a href="#app-screenshots">App Screenshots</a></li>
+    <li><a href="#current-status--availability">Current Status &amp; Availability</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/flutter"
+                target="_blank"
+              >Flutter</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/dart"
+                target="_blank"
+              >Dart</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/ai/ml"
+                target="_blank"
+              >AI/ML</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/supabase"
+                target="_blank"
+              >Supabase</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/mobile-development"
+                target="_blank"
+              >Mobile Development</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/dream-analysis"
+                target="_blank"
+              >Dream Analysis</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=Somnia%3a%20AI-Powered%20Dream%20Journal&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Somnia%3a%20AI-Powered%20Dream%20Journal: https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=Somnia%3a%20AI-Powered%20Dream%20Journal&amp;body=Check%20out%20this%20site https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar =  false ;
+  if(stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 15;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "50px";
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+ 
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Latest Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/my-google-cli-workflow/">
+                        <img src="/images/blogs/cli-workflow/terminal-setup.png" class="card-img-top" alt="My Google CLI Workflow">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/my-google-cli-workflow/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="My Google CLI Workflow">My Google CLI Workflow</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>My Google CLI Workflow: From Terminal to Phone in Perfect Sync You know that feeling when you discover a workflow that just clicks? That&rsquo;s exactly what happened when I built my Google CLI automation system. As a 27-year-old engineering student who absolutely loves automating everything (thanks …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 20, 2024</span>
+                    <a href="/blogs/my-google-cli-workflow/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/jamaica-history/">
+                        <img src="/images/cranwata.jpg" class="card-img-top" alt="History of Jamaica">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/jamaica-history/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="History of Jamaica">History of Jamaica</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In 2021, amid global challenges, I taught English in France to young minds from kindergarten (CP) to grade 5 (CM2). Their curiosity about Jamaica sparked an enchanting video project.
+Join this post to delve into our journey during unprecedented times. Through a crafted video, we embarked on a …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jul 3, 2021</span>
+                    <a href="/blogs/jamaica-history/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/RizPur" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path id="footer-socialNetworks-github-svg-path"
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+    <span class="px-1">
+        <a href="https://www.linkedin.com/in/joel-brown-b1696219b/" aria-label="linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn"
+                viewBox="0 0 512 512">
+                <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                <circle cx="142" cy="138" r="37" />
+                <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+    <a href="https://www.instagram.com/joikrr/" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+                <div class="pb-2">
+                    <a href="https://rizpur.com/" title="RizPur">
+                        <img alt="Footer logo" src="/rice-logo.png"
+                            height="40px" width="40px">
+                    </a>
+                </div>
+                <div class="pb-3 text-secondary" style="font-size: 0.9rem;">
+                    <div style="font-size: 1rem; margin-bottom: 0.25rem;">一粒米，天地恩</div>
+                    <div style="font-style: italic;">One rice grain contains the grace of the Heavens and the Earth</div>
+                </div>
+            
+            &copy; 2025  All rights reserved
+        </div>
+    </div>
+</div>
+</footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (document.body.className.includes("light")) {
+        document.body.classList.add('dark');
+        localStorage.setItem("pref-theme", 'dark');
+    }
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/contact.js"></script>
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

@@ -1,1 +1,152 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on RizPur</title><link>https://rizpur.com/tags/</link><description>Recent content in Tags on RizPur</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://rizpur.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Automation</title><link>https://rizpur.com/tags/automation/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/automation/</guid><description/></item><item><title>CLI</title><link>https://rizpur.com/tags/cli/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/cli/</guid><description/></item><item><title>Google APIs</title><link>https://rizpur.com/tags/google-apis/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/google-apis/</guid><description/></item><item><title>Linux</title><link>https://rizpur.com/tags/linux/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/linux/</guid><description/></item><item><title>Productivity</title><link>https://rizpur.com/tags/productivity/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/productivity/</guid><description/></item><item><title>Python</title><link>https://rizpur.com/tags/python/</link><pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/python/</guid><description/></item><item><title>AI/ML</title><link>https://rizpur.com/tags/ai/ml/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/ai/ml/</guid><description/></item><item><title>Dart</title><link>https://rizpur.com/tags/dart/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/dart/</guid><description/></item><item><title>Dream Analysis</title><link>https://rizpur.com/tags/dream-analysis/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/dream-analysis/</guid><description/></item><item><title>Flutter</title><link>https://rizpur.com/tags/flutter/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/flutter/</guid><description/></item><item><title>Mobile Development</title><link>https://rizpur.com/tags/mobile-development/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/mobile-development/</guid><description/></item><item><title>Supabase</title><link>https://rizpur.com/tags/supabase/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/supabase/</guid><description/></item><item><title>Caribbean</title><link>https://rizpur.com/tags/caribbean/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/caribbean/</guid><description/></item><item><title>Jamaica</title><link>https://rizpur.com/tags/jamaica/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/jamaica/</guid><description/></item><item><title>Logs</title><link>https://rizpur.com/tags/logs/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/logs/</guid><description/></item><item><title>Trinidad and Tobago</title><link>https://rizpur.com/tags/trinidad-and-tobago/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/trinidad-and-tobago/</guid><description/></item><item><title>C</title><link>https://rizpur.com/tags/c/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/c/</guid><description/></item><item><title>Eyes</title><link>https://rizpur.com/tags/eyes/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/eyes/</guid><description/></item><item><title>JavaScript</title><link>https://rizpur.com/tags/javascript/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/javascript/</guid><description/></item><item><title>French</title><link>https://rizpur.com/tags/french/</link><pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate><guid>https://rizpur.com/tags/french/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on RizPur</title>
+    <link>https://rizpur.com/tags/</link>
+    <description>Recent content in Tags on RizPur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rizpur.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automation</title>
+      <link>https://rizpur.com/tags/automation/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CLI</title>
+      <link>https://rizpur.com/tags/cli/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Google APIs</title>
+      <link>https://rizpur.com/tags/google-apis/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/google-apis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://rizpur.com/tags/linux/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://rizpur.com/tags/productivity/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://rizpur.com/tags/python/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI/ML</title>
+      <link>https://rizpur.com/tags/ai/ml/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/ai/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dart</title>
+      <link>https://rizpur.com/tags/dart/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/dart/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dream Analysis</title>
+      <link>https://rizpur.com/tags/dream-analysis/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/dream-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter</title>
+      <link>https://rizpur.com/tags/flutter/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/flutter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mobile Development</title>
+      <link>https://rizpur.com/tags/mobile-development/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/mobile-development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Supabase</title>
+      <link>https://rizpur.com/tags/supabase/</link>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/supabase/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Caribbean</title>
+      <link>https://rizpur.com/tags/caribbean/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/caribbean/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jamaica</title>
+      <link>https://rizpur.com/tags/jamaica/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/jamaica/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Logs</title>
+      <link>https://rizpur.com/tags/logs/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/logs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trinidad and Tobago</title>
+      <link>https://rizpur.com/tags/trinidad-and-tobago/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/trinidad-and-tobago/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>https://rizpur.com/tags/c/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eyes</title>
+      <link>https://rizpur.com/tags/eyes/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/eyes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JavaScript</title>
+      <link>https://rizpur.com/tags/javascript/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>French</title>
+      <link>https://rizpur.com/tags/french/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/tags/french/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
