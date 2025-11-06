@@ -2,93 +2,81 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://rizpur.com/tags/automation/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/blogs/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/cli/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/google-apis/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/linux/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/blogs/my-google-cli-workflow/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/productivity/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/python/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rizpur.com/tags/ai/ml/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/ai/ml/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/dart/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/dart/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/dream-analysis/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/dream-analysis/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/flutter/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/encryption/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/mobile-development/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/flutter/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/projects/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/mobile-development/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/projects/somnia/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/privacy/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/supabase/</loc>
+    <loc>https://hugo-profile.netlify.app/projects/</loc>
     <lastmod>2024-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/caribbean/</loc>
+    <loc>https://hugo-profile.netlify.app/</loc>
+    <lastmod>2024-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/projects/somnia/</loc>
+    <lastmod>2024-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/tags/supabase/</loc>
+    <lastmod>2024-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/tags/</loc>
+    <lastmod>2024-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/tags/caribbean/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/projects/caribbean-tracker/</loc>
+    <loc>https://hugo-profile.netlify.app/projects/caribbean-tracker/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/jamaica/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/jamaica/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/logs/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/logs/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/trinidad-and-tobago/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/trinidad-and-tobago/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/c/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/c/</loc>
     <lastmod>2023-08-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/projects/eyetracker/</loc>
+    <loc>https://hugo-profile.netlify.app/projects/eyetracker/</loc>
     <lastmod>2023-08-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/eyes/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/eyes/</loc>
     <lastmod>2023-08-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/javascript/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/javascript/</loc>
     <lastmod>2023-08-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/tags/french/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/python/</loc>
+    <lastmod>2023-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/blogs/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/blogs/jamaica-history/</loc>
+    <loc>https://hugo-profile.netlify.app/tags/french/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rizpur.com/categories/</loc>
+    <loc>https://hugo-profile.netlify.app/blogs/jamaica-history/</loc>
+    <lastmod>2021-07-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugo-profile.netlify.app/categories/</loc>
   </url>
 </urlset>

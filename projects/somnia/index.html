@@ -31,8 +31,8 @@
   
 
 
-<meta property="og:url" content="https://rizpur.com/projects/somnia/">
-  <meta property="og:site_name" content="RizPur">
+<meta property="og:url" content="https://hugo-profile.netlify.app/projects/somnia/">
+  <meta property="og:site_name" content="RiceJS">
   <meta property="og:title" content="Somnia: AI-Powered Dream Journal">
   <meta property="og:description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization">
   <meta property="og:locale" content="en_us">
@@ -79,9 +79,9 @@
         --secondary-color-dark: #212529;
     }
     body {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 1.6;
+        line-height: 1.5;
         text-align: left;
     }
 
@@ -113,8 +113,6 @@
 </style>
 
 
-<link rel="stylesheet" href="/css/custom.css" media="all">
-
 
 <meta name="description" content="A Flutter dream journal app with AI analysis, Supabase backend, and freemium monetization">
 <link rel="stylesheet" href="/css/single.css">
@@ -127,7 +125,7 @@
   
 
   <title>
-Somnia: AI-Powered Dream Journal | RizPur
+Somnia: AI-Powered Dream Journal | RiceJS
 
   </title>
 </head>
@@ -166,7 +164,7 @@ Somnia: AI-Powered Dream Journal | RizPur
                 
                 <img src="/rice-logo.png" width="30" height="30"
                     class="d-inline-block align-top">
-                RizPur
+                
                 
             </a>
 
@@ -205,13 +203,6 @@ Somnia: AI-Powered Dream Journal | RizPur
                     
 
                     
-                    <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#experience"
-                            aria-label="experience">
-                            Experience
-                        </a>
-                    </li>
-                    
 
                     
 
@@ -224,6 +215,13 @@ Somnia: AI-Powered Dream Journal | RizPur
                     </li>
                     
 
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#achievements"
+                            aria-label="achievements">
+                            Services
+                        </a>
+                    </li>
                     
 
                     
@@ -242,9 +240,9 @@ Somnia: AI-Powered Dream Journal | RizPur
                     
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/blogs" title="Tech Notes &amp; Life Logs">
+                        <a class="nav-link" href="/blogs" title="Blog posts">
                             
-                            Blogs
+                            Blog
                         </a>
                     </li>
                     
@@ -361,26 +359,35 @@ Somnia: AI-Powered Dream Journal | RizPur
 <h3 id="backend-supabase-with-edge-functions">Backend: Supabase with Edge Functions</h3>
 <p>Instead of building a custom backend, I leveraged Supabase for maximum efficiency:</p>
 <p><strong>Database Schema:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Core dreams table
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Core dreams table (content stored encrypted)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> dreams (
 </span></span><span style="display:flex;"><span>  id UUID <span style="color:#66d9ef">DEFAULT</span> gen_random_uuid() <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
 </span></span><span style="display:flex;"><span>  user_id UUID <span style="color:#66d9ef">REFERENCES</span> auth.users(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
-</span></span><span style="display:flex;"><span>  title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-</span></span><span style="display:flex;"><span>  content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-</span></span><span style="display:flex;"><span>  dream_date DATE <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-</span></span><span style="display:flex;"><span>  mood_rating INTEGER, <span style="color:#75715e">-- 3, 6, or 9 (sad, neutral, happy)
+</span></span><span style="display:flex;"><span>  title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,           <span style="color:#75715e">-- AES-256 encrypted on device
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,          <span style="color:#75715e">-- AES-256 encrypted on device
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  dream_date DATE <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  mood_rating INTEGER,            <span style="color:#75715e">-- Encrypted metadata
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  is_lucid BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
 </span></span><span style="display:flex;"><span>  tags TEXT[],
 </span></span><span style="display:flex;"><span>  created_at <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">DEFAULT</span> NOW()
 </span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- AI analysis results
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- User profiles with encryption keys
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> user_profiles (
+</span></span><span style="display:flex;"><span>  id UUID <span style="color:#66d9ef">REFERENCES</span> auth.users(id) <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>  encryption_key TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,   <span style="color:#75715e">-- Unique 256-bit AES key per user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  subscription_tier TEXT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;free&#39;</span>,
+</span></span><span style="display:flex;"><span>  credits_remaining INTEGER <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>  created_at <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">DEFAULT</span> NOW()
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- AI analysis results (encrypted after generation)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> dream_analyses (
 </span></span><span style="display:flex;"><span>  id UUID <span style="color:#66d9ef">DEFAULT</span> gen_random_uuid() <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
 </span></span><span style="display:flex;"><span>  dream_id UUID <span style="color:#66d9ef">REFERENCES</span> dreams(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
 </span></span><span style="display:flex;"><span>  user_id UUID <span style="color:#66d9ef">REFERENCES</span> auth.users(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
-</span></span><span style="display:flex;"><span>  analysis_text TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-</span></span><span style="display:flex;"><span>  insights JSONB <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#75715e">-- Themes, emotions, symbols, etc.
+</span></span><span style="display:flex;"><span>  analysis_text TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,    <span style="color:#75715e">-- Encrypted after AI processing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  insights JSONB <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,        <span style="color:#75715e">-- Encrypted after AI processing
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  model_used TEXT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;gpt-3.5-turbo&#39;</span>,
 </span></span><span style="display:flex;"><span>  confidence_score DECIMAL(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">85</span>,
 </span></span><span style="display:flex;"><span>  credits_consumed INTEGER <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">1</span>,
@@ -751,9 +758,11 @@ Lesson: Test the ACTUAL distribution method early.
 <p>Flutter has come a long way. The developer experience with hot reload, the widget system, and package ecosystem made complex features surprisingly manageable. But the gap between development and production deployment is still very real.</p>
 <h3 id="2-ai-integration-reality">2. AI Integration Reality</h3>
 <p>The hype around AI is real, but the implementation details matter. Cost optimization, prompt engineering, and error handling are crucial for production apps.</p>
-<h3 id="3-freemium-business-models">3. Freemium Business Models</h3>
+<h3 id="3-privacy-isnt-optional">3. Privacy Isn&rsquo;t Optional</h3>
+<p>Building encryption from the ground up taught me that security is easiest when designed in from day one. Retrofit encryption is painful - but with dreams being so personal, it was non-negotiable. Users deserve to know their subconscious thoughts aren&rsquo;t stored in plain text on someone else&rsquo;s server.</p>
+<h3 id="4-freemium-business-models">4. Freemium Business Models</h3>
 <p>Users are willing to pay for AI-powered insights, but the free tier needs to provide genuine value. The conversion funnel is all about demonstrating value before asking for payment.</p>
-<h3 id="4-state-management-evolution">4. State Management Evolution</h3>
+<h3 id="5-state-management-evolution">5. State Management Evolution</h3>
 <p>Riverpod feels like the future of Flutter state management. It&rsquo;s more complex than Provider but scales beautifully for real applications.</p>
 <h2 id="development-stats">Development Stats</h2>
 <ul>
@@ -798,6 +807,7 @@ Lesson: Test the ACTUAL distribution method early.
 <li>Supabase (PostgreSQL + Auth + Edge Functions)</li>
 <li>OpenAI GPT-3.5-turbo for analysis</li>
 <li>Row Level Security for data privacy</li>
+<li>End-to-end encryption for dream content</li>
 </ul>
 <p><strong>DevOps:</strong></p>
 <ul>
@@ -829,26 +839,130 @@ Lesson: Test the ACTUAL distribution method early.
     <p style="margin-top: 10px;"><strong>Create Dream</strong> - Simple dream logging with mood and lucidity tracking</p>
   </div>
 </div>
+<h2 id="privacy--security-your-dreams-stay-yours">Privacy &amp; Security: Your Dreams Stay Yours</h2>
+<p>In an age where personal data is often treated as a commodity, I built Somnia with privacy as a foundational principle. Dreams are deeply personal - they contain your fears, hopes, memories, and subconscious thoughts. That data deserves protection.</p>
+<h3 id="end-to-end-encryption-implementation">End-to-End Encryption Implementation</h3>
+<p>Every dream you write is encrypted on your device before being sent to the server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EncryptionService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// AES-256-CBC encryption with user-specific keys
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">String</span> encryptString(<span style="color:#66d9ef">String</span> plainText, <span style="color:#66d9ef">String</span> keyString) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> key <span style="color:#f92672">=</span> encrypt.Key(base64.decode(keyString)); <span style="color:#75715e">// 256-bit key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> encrypter <span style="color:#f92672">=</span> encrypt.Encrypter(
+</span></span><span style="display:flex;"><span>      encrypt.AES(key, mode: encrypt.AESMode.cbc),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> encrypted <span style="color:#f92672">=</span> encrypter.encrypt(plainText, iv: _fixedIV);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> encrypted.base64;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>What this means for you:</strong></p>
+<ul>
+<li><strong>Device-Side Encryption</strong>: Your dreams are encrypted on your phone before being uploaded</li>
+<li><strong>Unique User Keys</strong>: Each user gets a unique 256-bit AES encryption key stored securely in their profile</li>
+<li><strong>Zero-Knowledge Architecture</strong>: Even the database administrator can&rsquo;t read your dreams without your encryption key</li>
+<li><strong>Secure AI Analysis</strong>: Dreams are decrypted server-side only during AI analysis, then immediately re-encrypted</li>
+</ul>
+<h3 id="privacy-first-architecture">Privacy-First Architecture</h3>
+<pre tabindex="0"><code>┌─────────────────┐    Encrypted    ┌──────────────────┐
+│  Your Device    │    ────────►    │   Supabase DB    │
+│  (Plain Text)   │                 │  (Encrypted)     │
+└─────────────────┘                 └──────────────────┘
+        │                                    │
+        │ Encryption Key                     │
+        │ (Stored in Profile)                │
+        │                                    │
+        ▼                                    ▼
+┌─────────────────┐    Decrypted    ┌──────────────────┐
+│  AI Analysis    │    ◄────────    │  Edge Function   │
+│  (Temporary)    │    ────────►    │  Re-encrypts     │
+└─────────────────┘    Analysis     └──────────────────┘
+</code></pre><p><strong>Multi-Layer Security:</strong></p>
+<ol>
+<li><strong>Row Level Security (RLS)</strong>: Supabase enforces that users can only access their own data</li>
+<li><strong>JWT Authentication</strong>: All API requests require valid authentication tokens</li>
+<li><strong>Encryption at Rest</strong>: Dreams stored as encrypted ciphertext in PostgreSQL</li>
+<li><strong>No Third-Party Analytics</strong>: No Google Analytics, Facebook Pixel, or tracking SDKs</li>
+<li><strong>Local-First Approach</strong>: Offline mode keeps dreams on your device until you&rsquo;re ready to sync</li>
+</ol>
+<h3 id="data-you-control">Data You Control</h3>
+<p><strong>What We Store:</strong></p>
+<ul>
+<li>Encrypted dream content (title, content, date)</li>
+<li>Dream metadata (mood, lucidity rating) - <strong>encrypted</strong></li>
+<li>AI analysis results - <strong>encrypted after generation</strong></li>
+<li>Subscription tier and credits remaining</li>
+<li>Authentication tokens (managed by Supabase Auth)</li>
+</ul>
+<p><strong>What We DON&rsquo;T Store:</strong></p>
+<ul>
+<li>Unencrypted dream text</li>
+<li>Device identifiers or advertising IDs</li>
+<li>Location data</li>
+<li>Browsing history or app usage patterns</li>
+<li>Social media connections (beyond initial Google Sign-In)</li>
+</ul>
+<p><strong>Your Rights:</strong></p>
+<ul>
+<li><strong>Export All Data</strong>: Download your complete dream journal as JSON</li>
+<li><strong>Delete Account</strong>: Permanently remove all data with one tap</li>
+<li><strong>Revoke Access</strong>: Sign out from all devices anytime</li>
+<li><strong>Data Portability</strong>: Standard format for migrating to other apps</li>
+</ul>
+<h3 id="open-source-commitment">Open Source Commitment</h3>
+<p>The encryption implementation is open source and auditable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// lib/services/encryption_service.dart
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// View the complete implementation on GitHub
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">String</span> generateKey() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> key <span style="color:#f92672">=</span> encrypt.Key.fromSecureRandom(<span style="color:#ae81ff">32</span>); <span style="color:#75715e">// 256-bit secure random
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> base64.encode(key.bytes);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can verify that we&rsquo;re using industry-standard AES-256-CBC encryption with properly random keys. No backdoors, no key escrow, no compromises.</p>
+<h3 id="compliance--best-practices">Compliance &amp; Best Practices</h3>
+<ul>
+<li><strong>GDPR Compliant</strong>: Data minimization, user consent, right to erasure</li>
+<li><strong>No Selling Data</strong>: Your dreams are never sold to advertisers or data brokers</li>
+<li><strong>Minimal Retention</strong>: Deleted dreams are purged within 30 days</li>
+<li><strong>Secure Credentials</strong>: All API keys stored in environment variables, never in code</li>
+<li><strong>Regular Security Audits</strong>: Automated dependency scanning and security testing</li>
+</ul>
+<h3 id="why-this-matters">Why This Matters</h3>
+<p>Many apps claim &ldquo;privacy&rdquo; but still send your data in plain text to their servers. With Somnia:</p>
+<ol>
+<li><strong>Even if our database is compromised</strong>, attackers only get encrypted ciphertext</li>
+<li><strong>Even if Supabase employees look at the data</strong>, they see gibberish without your key</li>
+<li><strong>Even during AI analysis</strong>, dreams are decrypted temporarily and never logged</li>
+</ol>
+<p>This is the same encryption standard used by:</p>
+<ul>
+<li>Signal for end-to-end encrypted messaging</li>
+<li>ProtonMail for secure email</li>
+<li>1Password for password management</li>
+</ul>
+<p>Your subconscious thoughts deserve the same protection as your passwords.</p>
+<hr>
 <h2 id="current-status--availability">Current Status &amp; Availability</h2>
 <p>After overcoming the OAuth authentication challenges, <strong>Somnia is now live on the Google Play Store</strong> in internal testing. The app successfully handles:</p>
 <ul>
 <li>✅ Google Sign-In authentication across all distribution channels</li>
 <li>✅ AI-powered dream analysis with freemium monetization</li>
 <li>✅ Real-time data synchronization with Supabase</li>
+<li>✅ End-to-end encryption for all dream content</li>
+<li>✅ Privacy-first architecture with zero-knowledge storage</li>
 <li>✅ Persistent error logging for production debugging</li>
 <li>✅ Multi-certificate signing for Play Store distribution</li>
 </ul>
-<p>The journey from &ldquo;working on my machine&rdquo; to &ldquo;working for beta testers&rdquo; taught me more about production mobile development than any tutorial could. This project demonstrates not just the ability to build features, but to troubleshoot and deploy them in the real world.</p>
+<p>The journey from &ldquo;working on my machine&rdquo; to &ldquo;working for beta testers&rdquo; taught me more about production mobile development than any tutorial could. This project demonstrates not just the ability to build features, but to troubleshoot and deploy them in the real world with genuine respect for user privacy.</p>
 <p><strong>Technical Highlights:</strong></p>
 <ul>
 <li>Complete Flutter application with Riverpod state management</li>
 <li>Supabase backend with Edge Functions and PostgreSQL</li>
 <li>OpenAI integration with cost-optimized prompts</li>
+<li>End-to-end encryption using AES-256-CBC</li>
 <li>OAuth 2.0 authentication with multiple signing certificates</li>
 <li>Production-grade error tracking and logging system</li>
 <li>Freemium business model with subscription management</li>
+<li>GDPR-compliant data handling and privacy controls</li>
 </ul>
-<p><em>Full technical documentation available, including the complete OAuth troubleshooting guide. Contact me to discuss the implementation details or explore collaboration opportunities.</em></p>
+<p><em>Full technical documentation available, including the complete OAuth troubleshooting guide and encryption implementation details. Open to discussing the technical architecture or exploring collaboration opportunities.</em></p>
 
           </article>
         </div>
@@ -914,8 +1028,9 @@ Lesson: Test the ACTUAL distribution method early.
       <ul>
         <li><a href="#1-mobile-development-maturity">1. Mobile Development Maturity</a></li>
         <li><a href="#2-ai-integration-reality">2. AI Integration Reality</a></li>
-        <li><a href="#3-freemium-business-models">3. Freemium Business Models</a></li>
-        <li><a href="#4-state-management-evolution">4. State Management Evolution</a></li>
+        <li><a href="#3-privacy-isnt-optional">3. Privacy Isn&rsquo;t Optional</a></li>
+        <li><a href="#4-freemium-business-models">4. Freemium Business Models</a></li>
+        <li><a href="#5-state-management-evolution">5. State Management Evolution</a></li>
       </ul>
     </li>
     <li><a href="#development-stats">Development Stats</a></li>
@@ -929,6 +1044,16 @@ Lesson: Test the ACTUAL distribution method early.
     <li><a href="#the-tech-stack-that-works">The Tech Stack That Works</a></li>
     <li><a href="#why-this-project-matters">Why This Project Matters</a></li>
     <li><a href="#app-screenshots">App Screenshots</a></li>
+    <li><a href="#privacy--security-your-dreams-stay-yours">Privacy &amp; Security: Your Dreams Stay Yours</a>
+      <ul>
+        <li><a href="#end-to-end-encryption-implementation">End-to-End Encryption Implementation</a></li>
+        <li><a href="#privacy-first-architecture">Privacy-First Architecture</a></li>
+        <li><a href="#data-you-control">Data You Control</a></li>
+        <li><a href="#open-source-commitment">Open Source Commitment</a></li>
+        <li><a href="#compliance--best-practices">Compliance &amp; Best Practices</a></li>
+        <li><a href="#why-this-matters">Why This Matters</a></li>
+      </ul>
+    </li>
     <li><a href="#current-status--availability">Current Status &amp; Availability</a></li>
   </ul>
 </nav>
@@ -941,29 +1066,37 @@ Lesson: Test the ACTUAL distribution method early.
             <h5>Tags</h5>
             <ul class="tags-ul list-unstyled list-inline">
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/flutter"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/flutter"
                 target="_blank"
               >Flutter</a></li>
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/dart"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/dart"
                 target="_blank"
               >Dart</a></li>
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/ai/ml"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/ai/ml"
                 target="_blank"
               >AI/ML</a></li>
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/supabase"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/supabase"
                 target="_blank"
               >Supabase</a></li>
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/mobile-development"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/mobile-development"
                 target="_blank"
               >Mobile Development</a></li>
               
-              <li class="list-inline-item"><a href="https://rizpur.com/tags/dream-analysis"
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/dream-analysis"
                 target="_blank"
               >Dream Analysis</a></li>
+              
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/encryption"
+                target="_blank"
+              >Encryption</a></li>
+              
+              <li class="list-inline-item"><a href="https://hugo-profile.netlify.app/tags/privacy"
+                target="_blank"
+              >Privacy</a></li>
               
             </ul>
           </aside>
@@ -975,22 +1108,22 @@ Lesson: Test the ACTUAL distribution method early.
             <div class="social-content">
               <ul class="list-inline">
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fhugo-profile.netlify.app%2fprojects%2fsomnia%2f">
                     <i class="fab fa-linkedin"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://twitter.com/share?text=Somnia%3a%20AI-Powered%20Dream%20Journal&url=https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                  <a target="_blank" href="https://twitter.com/share?text=Somnia%3a%20AI-Powered%20Dream%20Journal&url=https%3a%2f%2fhugo-profile.netlify.app%2fprojects%2fsomnia%2f">
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://api.whatsapp.com/send?text=Somnia%3a%20AI-Powered%20Dream%20Journal: https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Somnia%3a%20AI-Powered%20Dream%20Journal: https%3a%2f%2fhugo-profile.netlify.app%2fprojects%2fsomnia%2f">
                     <i class="fab fa-whatsapp"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href='mailto:?subject=Somnia%3a%20AI-Powered%20Dream%20Journal&amp;body=Check%20out%20this%20site https%3a%2f%2frizpur.com%2fprojects%2fsomnia%2f'>
+                  <a target="_blank" href='mailto:?subject=Somnia%3a%20AI-Powered%20Dream%20Journal&amp;body=Check%20out%20this%20site https%3a%2f%2fhugo-profile.netlify.app%2fprojects%2fsomnia%2f'>
                     <i class="fa fa-envelope"></i>
                   </a>
                 </li>
@@ -1061,33 +1194,9 @@ Lesson: Test the ACTUAL distribution method early.
     
     
     <div class="h3 text-center text-secondary py-3">
-        Latest Posts
+        Recent Posts
     </div>
     <div class="row justify-content-center">
-        
-        <div class="col-lg-4 col-md-6 pt-2">
-            <div class="card h-100">
-                
-                <div class="card-header">
-                    <a href="/blogs/my-google-cli-workflow/">
-                        <img src="/images/blogs/cli-workflow/terminal-setup.png" class="card-img-top" alt="My Google CLI Workflow">
-                    </a>
-                </div>
-                
-                <div class="card-body bg-transparent p-3 shadow-sm">
-                    <a href="/blogs/my-google-cli-workflow/" class="primary-font card-title">
-                        <h5 class="card-title bg-transparent" title="My Google CLI Workflow">My Google CLI Workflow</h5>
-                    </a>
-                    <div class="card-text secondary-font">
-                        <p>My Google CLI Workflow: From Terminal to Phone in Perfect Sync You know that feeling when you discover a workflow that just clicks? That&rsquo;s exactly what happened when I built my Google CLI automation system. As a 27-year-old engineering student who absolutely loves automating everything (thanks …</p>
-                    </div>
-                </div>
-                <div class="mt-auto card-footer">
-                    <span class="float-start">Nov 20, 2024</span>
-                    <a href="/blogs/my-google-cli-workflow/" class="float-end btn btn-outline-info btn-sm">Read</a>
-                </div>
-            </div>
-        </div>
         
         <div class="col-lg-4 col-md-6 pt-2">
             <div class="card h-100">
@@ -1198,7 +1307,7 @@ Join this post to delve into our journey during unprecedented times. Through a c
         <div class="col-md-4 text-center">
             
                 <div class="pb-2">
-                    <a href="https://rizpur.com/" title="RizPur">
+                    <a href="https://hugo-profile.netlify.app/" title="RiceJS">
                         <img alt="Footer logo" src="/rice-logo.png"
                             height="40px" width="40px">
                     </a>
@@ -1214,10 +1323,14 @@ Join this post to delve into our journey during unprecedented times. Through a c
 </div>
 </footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
 <script>
-    if (document.body.className.includes("light")) {
+    if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
-        localStorage.setItem("pref-theme", 'dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
     }
+
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {

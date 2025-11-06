@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flutter on RizPur</title>
-    <link>https://rizpur.com/tags/flutter/</link>
-    <description>Recent content in Flutter on RizPur</description>
+    <title>Flutter on RiceJS</title>
+    <link>https://hugo-profile.netlify.app/tags/flutter/</link>
+    <description>Recent content in Flutter on RiceJS</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://rizpur.com/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hugo-profile.netlify.app/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Somnia: AI-Powered Dream Journal</title>
-      <link>https://rizpur.com/projects/somnia/</link>
+      <link>https://hugo-profile.netlify.app/projects/somnia/</link>
       <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/projects/somnia/</guid>
+      <guid>https://hugo-profile.netlify.app/projects/somnia/</guid>
       <description>Somnia: When Dreams Meet AI Ever wondered what your dreams actually mean? As a 27-year-old engineering student fascinated by the intersection of AI and human psychology, I built Somnia - a modern Flutter dream journal that uses AI to unlock the hidden patterns in your subconscious mind.&#xA;This isn&amp;rsquo;t just another note-taking app. It&amp;rsquo;s a complete system that combines dream logging, AI-powered analysis, and freemium monetization into a polished mobile experience.</description>
     </item>
   </channel>

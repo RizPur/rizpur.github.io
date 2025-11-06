@@ -1,46 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RizPur</title>
-    <link>https://rizpur.com/</link>
-    <description>Recent content on RizPur</description>
+    <title>RiceJS</title>
+    <link>https://hugo-profile.netlify.app/</link>
+    <description>Recent content on RiceJS</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://rizpur.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My Google CLI Workflow</title>
-      <link>https://rizpur.com/blogs/my-google-cli-workflow/</link>
-      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/blogs/my-google-cli-workflow/</guid>
-      <description>My Google CLI Workflow: From Terminal to Phone in Perfect Sync You know that feeling when you discover a workflow that just clicks? That&amp;rsquo;s exactly what happened when I built my Google CLI automation system. As a 27-year-old engineering student who absolutely loves automating everything (thanks to my time as a Network Engineer at Digicel), I&amp;rsquo;ve created a seamless bridge between my terminal and my phone&amp;rsquo;s Google Calendar widget.&#xA;Why I Built This Let me paint the picture: I&amp;rsquo;m deep in my IDE, working on some networking assignment for Eurecom, when I remember I need to schedule a call with my project partner.</description>
-    </item>
+    <lastBuildDate>Fri, 20 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://hugo-profile.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Somnia: AI-Powered Dream Journal</title>
-      <link>https://rizpur.com/projects/somnia/</link>
+      <link>https://hugo-profile.netlify.app/projects/somnia/</link>
       <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/projects/somnia/</guid>
+      <guid>https://hugo-profile.netlify.app/projects/somnia/</guid>
       <description>Somnia: When Dreams Meet AI Ever wondered what your dreams actually mean? As a 27-year-old engineering student fascinated by the intersection of AI and human psychology, I built Somnia - a modern Flutter dream journal that uses AI to unlock the hidden patterns in your subconscious mind.&#xA;This isn&amp;rsquo;t just another note-taking app. It&amp;rsquo;s a complete system that combines dream logging, AI-powered analysis, and freemium monetization into a polished mobile experience.</description>
     </item>
     <item>
       <title>Caribbean Log Tracker</title>
-      <link>https://rizpur.com/projects/caribbean-tracker/</link>
+      <link>https://hugo-profile.netlify.app/projects/caribbean-tracker/</link>
       <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/projects/caribbean-tracker/</guid>
+      <guid>https://hugo-profile.netlify.app/projects/caribbean-tracker/</guid>
       <description>A Real-Time Data Management Solution Ever thought about how to make sense of all the data you have just floating around your business? This application, Caribbean Log Data Dashboard, built with React Leaflet, MySQL, and Laravel aims to address that.&#xA;Dashboard Architecture React Leaflet: For the cool interactive map you see on the dashboard. MySQL: Where all the data lives. Laravel: Makes sure everything talks to each other nicely and keeps it secure.</description>
     </item>
     <item>
       <title>Eye-Tracking AAC System</title>
-      <link>https://rizpur.com/projects/eyetracker/</link>
+      <link>https://hugo-profile.netlify.app/projects/eyetracker/</link>
       <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/projects/eyetracker/</guid>
+      <guid>https://hugo-profile.netlify.app/projects/eyetracker/</guid>
       <description>Eye-Tracking AAC System Augmentative and Alternative Communication (AAC) refers to the field of emerging technologies that utilizes communication systems to aide or supplement speech or writing for those with impairments or difficulties communicating.&#xA;It allows people to regain or enhance certain communications skills usually impaired by congenital conditions or acquired maladies such as autism or cerebral palsy.&#xA;Inspiration I was captivated by a particular episode of Breaking Bad where Hector Salamanca, a paraplegic and mute character, is being questioned by the DEA.</description>
     </item>
     <item>
       <title>History of Jamaica</title>
-      <link>https://rizpur.com/blogs/jamaica-history/</link>
+      <link>https://hugo-profile.netlify.app/blogs/jamaica-history/</link>
       <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>https://rizpur.com/blogs/jamaica-history/</guid>
+      <guid>https://hugo-profile.netlify.app/blogs/jamaica-history/</guid>
       <description>In 2021, amid global challenges, I taught English in France to young minds from kindergarten (CP) to grade 5 (CM2). Their curiosity about Jamaica sparked an enchanting video project.&#xA;Join this post to delve into our journey during unprecedented times. Through a crafted video, we embarked on a virtual exploration of Jamaica&amp;rsquo;s historical richness, culture, and heartwarming cross-border connections.</description>
     </item>
   </channel>
