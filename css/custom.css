@@ -1,21 +1,7 @@
-/* Custom styles for RizPur */
-
-/* Make all project thumbnails the same size */
-#projects .card-img-top {
+/* Custom styles for project thumbnails - standardized sizing */
+#projects .card .card-img-top {
     width: 100%;
     height: 250px;
     object-fit: cover;
     object-position: center;
-}
-
-/* Reduce achievements/services container height */
-#achievements img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    object-position: center;
-}
-
-#achievements .card {
-    min-height: auto;
 }
