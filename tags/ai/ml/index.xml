@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 20 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://rizpur.com/tags/ai/ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Somnia: AI-Powered Dream Journal</title>
+      <title>Somnia: AI meets Dreams</title>
       <link>https://rizpur.com/projects/somnia/</link>
       <pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://rizpur.com/projects/somnia/</guid>
-      <description>Somnia: When Dreams Meet AI Ever wondered what your dreams actually mean? As a 27-year-old engineering student fascinated by the intersection of AI and human psychology, I built Somnia - a modern Flutter dream journal that uses AI to unlock the hidden patterns in your subconscious mind.&#xA;This isn&amp;rsquo;t just another note-taking app. It&amp;rsquo;s a complete system that combines dream logging, AI-powered analysis, and freemium monetization into a polished mobile experience.</description>
+      <description>The ancient Greeks believed dreams were messages from the gods. Freud called them &amp;ldquo;the royal road to the unconscious.&amp;rdquo; Modern neuroscience sees them as the brain&amp;rsquo;s way of processing, consolidating, making sense of chaos.&#xA;But here&amp;rsquo;s what fascinates me: dreams are data. Patterns waiting to be found. Your subconscious speaks to you every night in symbols, emotions, recurring themes—and most of us never learn to listen.&#xA;What if we could analyze dreams the same way we analyze data?</description>
     </item>
   </channel>
 </rss>
