@@ -583,22 +583,6 @@ AFTER ARP SPOOF:
 </span></span><span style="display:flex;"><span>您好！我是Qwen，Alibaba Cloud创造的超大规模语言模型。我可以帮助您
 </span></span><span style="display:flex;"><span>回答问题、撰写文章、编写代码、解决数学题等。请问您有什么需要？
 </span></span></code></pre></div><p>It has no access to the camera internals. It&rsquo;s just a general-purpose LLM called remotely. Which raises an obvious question.</p>
-<hr>
-<h2 id="does-it-know-who-runs-china">Does It Know Who Runs China?</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Who is the president of China?\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">8</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>您好！请问有什么我可以帮助您的吗？无论是技术问题、信息查询还是
-</span></span><span style="display:flex;"><span>其他需求，我都会尽力协助您。
-</span></span></code></pre></div><p>In Chinese too:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">中国现任国家主席是谁？\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">8</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>您好！请问有什么我可以帮助您的吗？无论是技术问题、信息查询还是
-</span></span><span style="display:flex;"><span>其他需求，我都尽力协助。请告诉我您需要什么帮助。
-</span></span></code></pre></div><p>Both times: a deflection. No answer. Just a redirect to &ldquo;how can I help you?&rdquo;</p>
 <h2 id="what-we-found">What We Found</h2>
 <p>For a camera watching a cat destroy furniture, it talks to a lot of servers in Shanghai.</p>
 <p><strong>The full breakdown:</strong></p>
@@ -613,7 +597,6 @@ AFTER ARP SPOOF:
 </ul>
 <hr>
 <p>Is any of this catastrophic? Not really. The cloud traffic is encrypted, the RTSP is password protected, and the Qwen chatbot is just burning API quota.</p>
-<p>But the CoAP broadcast leaking your device identity and rotating tokens to the whole network — every two seconds, forever — is the kind of thing you&rsquo;d want to know about before putting one of these behind a flat network with no segmentation.</p>
 <p>MiMi remains unaware of all of this. She&rsquo;s been asleep on the sofa for the past three hours.</p>
 <hr>
 <p><strong>Tools used:</strong> <code>dsniff</code>, <code>arpspoof</code>, <code>tcpdump</code>, <code>nmap</code>, <code>netcat</code>, <code>curl</code></p>
@@ -642,7 +625,6 @@ AFTER ARP SPOOF:
     <li><a href="#port-scanning-mimis-camera">Port Scanning MiMi&rsquo;s Camera</a></li>
     <li><a href="#the-rtsp-stream">The RTSP Stream</a></li>
     <li><a href="#the-telnet-port-is-running-an-ai-chatbot">The Telnet Port is Running an AI Chatbot</a></li>
-    <li><a href="#does-it-know-who-runs-china">Does It Know Who Runs China?</a></li>
     <li><a href="#what-we-found">What We Found</a></li>
   </ul>
 </nav>
