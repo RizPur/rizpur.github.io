@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/rice-logo.png type="image/gif">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+  
+
+
+<meta property="og:url" content="https://rizpur.com/blogs/cat-camera-rabbit-hole/">
+  <meta property="og:site_name" content="RizPur">
+  <meta property="og:title" content="What My Cat&#39;s Camera Was Doing Behind My Back">
+  <meta property="og:description" content="How a £20 IoT camera led me down a rabbit hole involving ARP spoofing, Alibaba Cloud, and an AI chatbot hiding inside a telnet port">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:tag" content="Networking">
+    <meta property="article:tag" content="IoT">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="China">
+    <meta property="article:tag" content="Linux">
+    <meta property="og:image" content="https://rizpur.com/images/blogs/mimi.jpeg">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rizpur.com/images/blogs/mimi.jpeg">
+  <meta name="twitter:title" content="What My Cat&#39;s Camera Was Doing Behind My Back">
+  <meta name="twitter:description" content="How a £20 IoT camera led me down a rabbit hole involving ARP spoofing, Alibaba Cloud, and an AI chatbot hiding inside a telnet port">
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --text-link-color: #007bff;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --text-link-color-dark: #ffffff;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        height: 0px;
+        width: 8px;
+        background-color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #b0b0b0;
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+
+
+<meta name="description" content="How a £20 IoT camera led me down a rabbit hole involving ARP spoofing, Alibaba Cloud, and an AI chatbot hiding inside a telnet port">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
+
+
+  
+  
+
+  <title>
+What My Cat&#39;s Camera Was Doing Behind My Back | RizPur
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+
+
+<header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/rice-logo.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                
+                
+            </a>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Ctrl &#43; k to Search...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Ctrl &#43; k to Search...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#projects"
+                            aria-label="projects">
+                            Projects
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#achievements"
+                            aria-label="achievements">
+                            Services
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/blogs" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">What My Cat&#39;s Camera Was Doing Behind My Back</h1>
+            <div class="text-center">
+              
+                Joel Brown
+                <small>|</small>
+              
+              Feb 27, 2026
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/images/blogs/mimi.jpeg" alt="What My Cat&#39;s Camera Was Doing Behind My Back">
+          </div>
+          
+          <article class="page-content  p-2">
+          <p>We got a cat.</p>
+<p>Her name is <strong>MiMi</strong>, and we also got a cheap WiFi camera so we could watch her destroy things while not home.</p>
+<p><img src="/images/blogs/mimi.jpeg" alt="MiMi Rice Rice"></p>
+<p>The camera came in a generic white box, had a QR code on the bottom, and cost 12 euros from China. You know the type.</p>
+<p>Setting it up was simple. Download the Skyworth app, scan the QR code, connect to WiFi. Done. That&rsquo;s where the first interesting thing happened.</p>
+<hr>
+<h2 id="the-camera-only-speaks-24ghz">The Camera Only Speaks 2.4GHz</h2>
+<p>When the app asked me to connect the camera to WiFi, it couldn&rsquo;t see my main network. I have a dual-band router — 5GHz for everything fast, 2.4GHz for older devices. The camera couldnt see tbe 5ghz since the router had a config for each band sharing the same SSID.</p>
+<p>This is pretty common for cheap IoT hardware — the 2.4GHz chips are cheaper and have better wall penetration, so manufacturers always go that route.</p>
+<p>To get it working I had to log into my router and create a <strong>separate 2.4GHz-only SSID</strong>. While I was already in the router config poking around, I noticed something in the traffic stats: the camera had already phoned home before I&rsquo;d even finished setting it up. DNS queries and TCP connections to IPs I didn&rsquo;t recognise.</p>
+<hr>
+<h2 id="getting-in-the-middle">Getting in the Middle</h2>
+<p>To actually see what the camera was sending, I needed to intercept its traffic like Mr. robot.. ARP spoofing.</p>
+<p>Quick explanation — ARP (Address Resolution Protocol) is how devices on ur network figure out who has which IP address. When your router wants to send something to your camera, it broadcasts: <em>&ldquo;Who has 192.168.1.21? Tell me your MAC address.&rdquo;</em> The camera replies with its MAC and they talk directly.</p>
+<p>ARP spoofing poisons that table. You tell both the camera <em>and</em> the router that <strong>your</strong> machine is the other one. Traffic flows through you instead.</p>
+<pre tabindex="0"><code>NORMAL FLOW:
+
+  [Camera]  ────────────────────────  [Router]  ──── Internet
+  .1.21                                 .1.1
+  (MAC: ac:cf:7b)                    (MAC: 34:d8:56)
+
+
+AFTER ARP SPOOF:
+
+  [Camera]  ──── [My Laptop] ──── [Router]  ──── Internet
+  .1.21           .1.100          .1.1
+                  (MAC: b4:6b:fc)
+
+  Camera thinks my laptop is the router.
+  Router thinks my laptop is the camera.
+  I think im mr robot.
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo apt install dsniff
+</span></span><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo sysctl -w net.ipv4.ip_forward<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>net.ipv4.ip_forward <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo arpspoof -i wlp107s0 -t 192.168.1.21 192.168.1.1 &amp;
+</span></span><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo arpspoof -i wlp107s0 -t 192.168.1.1 192.168.1.21 &amp;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b4:6b:fc:2:d7:85 ac:cf:7b:46:b5:30 <span style="color:#ae81ff">0806</span> 42: arp reply 192.168.1.21 is-at b4:6b:fc:2:d7:85
+</span></span><span style="display:flex;"><span>b4:6b:fc:2:d7:85 34:d8:56:d:20:66 <span style="color:#ae81ff">0806</span> 42: arp reply 192.168.1.1 is-at b4:6b:fc:2:d7:85
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo tcpdump -i wlp107s0 host 192.168.1.21 -w camera_capture.pcap
+</span></span><span style="display:flex;"><span>tcpdump: listening on wlp107s0, link-type EN10MB <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>, snapshot length <span style="color:#ae81ff">262144</span> bytes
+</span></span></code></pre></div><p>Both the camera and the router now believed my MAC address (<code>b4:6b:fc:2:d7:85</code>) was the other party. All of MiMi&rsquo;s traffic was flowing through my laptop.</p>
+<hr>
+<h2 id="the-first-capture--mqtt-on-port-1883">The First Capture — MQTT on Port 1883</h2>
+<p>Reading the packet capture back:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ tcpdump -r camera_capture.pcap -n -X <span style="color:#e6db74">&#39;tcp port 1883&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>00:01:03.059390 IP 192.168.1.21.53090 &gt; 101.132.32.139.1883: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">69</span>
+</span></span><span style="display:flex;"><span>    0x0030:  f606 9f56 <span style="color:#ae81ff">1703</span> <span style="color:#ae81ff">0300</span> 40b9 <span style="color:#ae81ff">8233</span> <span style="color:#ae81ff">4736</span> 04b2
+</span></span><span style="display:flex;"><span>    0x0040:  43dc 2c8c d43e e5af 26c3 edab 7d99 525d
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>00:01:33.165985 IP 192.168.1.21.53090 &gt; 101.132.32.139.1883: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">69</span>
+</span></span><span style="display:flex;"><span>00:02:03.073183 IP 192.168.1.21.53090 &gt; 101.132.32.139.1883: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">69</span>
+</span></span><span style="display:flex;"><span>00:02:33.070398 IP 192.168.1.21.53090 &gt; 101.132.32.139.1883: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">69</span>
+</span></span></code></pre></div><p>Port 1883 is <strong>MQTT</strong> — a lightweight pub/sub protocol built for IoT. The payload starts with <code>17 03 03</code> — that&rsquo;s a TLS 1.2 Application Data header. MQTT wrapped inside TLS.</p>
+<p>And every packet is exactly <strong>69 bytes</strong>, arriving every <strong>30 seconds</strong> like clockwork. That&rsquo;s an MQTT <code>PINGREQ</code> — a keepalive heartbeat. The camera was maintaining a persistent encrypted connection to a Chinese IP address.</p>
+<p>Couldn&rsquo;t read the content. But the architecture was clear: the camera has a permanent open channel to Shanghai.</p>
+<hr>
+<h2 id="power-cycling-for-the-handshake">Power-Cycling for the Handshake</h2>
+<p>The problem with joining mid-stream is you miss the TLS handshake — specifically the <code>ClientHello</code>, where the client reveals which hostname it&rsquo;s connecting to via SNI (Server Name Indication).</p>
+<p>To catch that, I unplugged and replugged the camera.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ sudo tcpdump -i wlp107s0 host 192.168.1.21 -w camera_capture2.pcap
+</span></span><span style="display:flex;"><span>tcpdump: listening on wlp107s0, link-type EN10MB <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>, snapshot length <span style="color:#ae81ff">262144</span> bytes
+</span></span><span style="display:flex;"><span>^C1713 packets captured
+</span></span></code></pre></div><p><strong>1713 packets.</strong> A much richer picture.</p>
+<hr>
+<h2 id="mapping-the-cameras-entire-network-behaviour">Mapping the Camera&rsquo;s Entire Network Behaviour</h2>
+<p>Extracting every destination the camera contacted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ tcpdump -r camera_capture2.pcap -n <span style="color:#e6db74">&#39;src 192.168.1.21&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | awk <span style="color:#e6db74">&#39;{print $5}&#39;</span> | sed <span style="color:#e6db74">&#39;s/\.[0-9]*$//&#39;</span> | sort | uniq -c | sort -rn | head -20
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">684</span> 180.163.54.151.443:
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">160</span> 86.71.230.22.48316:
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">46</span> 139.224.42.2.1883:
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">20</span> 101.132.119.51.3478:
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">19</span> 255.255.255.255.5683:
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">13</span> 116.63.78.64.80:
+</span></span></code></pre></div><p>Then pulling all the DNS queries:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ tcpdump -r camera_capture2.pcap -n -A <span style="color:#e6db74">&#39;src 192.168.1.21 and port 53&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>00:11:04  192.168.1.21 &gt; 123.23.23.23: A? public.iot-as-mqtt.cn-shanghai.aliyuncs.com.
+</span></span><span style="display:flex;"><span>00:11:28  192.168.1.21 &gt; 8.8.8.8:     A? ott.skyworthbox.com.
+</span></span><span style="display:flex;"><span>00:11:48  192.168.1.21 &gt; 8.8.8.8:     A? www.baidu.com.
+</span></span><span style="display:flex;"><span>00:11:57  192.168.1.21 &gt; 114.114.114: A? iotx-vision-business.cn-shanghai.log.aliyuncs.com.
+</span></span><span style="display:flex;"><span>00:11:58  192.168.1.21 &gt; 192.168.1.1: A? link-vision-picture-sh.oss-cn-shanghai.aliyuncs.com.
+</span></span></code></pre></div><p>Here&rsquo;s the full picture of what MiMi&rsquo;s camera does on the network:</p>
+<pre tabindex="0"><code>                        ┌─────────────────────────────────────┐
+                        │           MiMi&#39;s Camera             │
+                        │          192.168.1.21               │
+                        └──┬──────┬──────┬──────┬────────────┘
+                           │      │      │      │
+              ┌────────────┘      │      │      └──────────────┐
+              │                   │      │                      │
+              ▼                   ▼      ▼                      ▼
+    MQTT/TLS :1883          HTTPS :443  UDP P2P          CoAP UDP :5683
+    ──────────────          ─────────  ─────────         ─────────────
+    Alibaba IoT             Alibaba    86.71.x.x         BROADCAST
+    Command &amp; Control       CDN        (WebRTC P2P       to entire LAN
+    (always-on heartbeat)   Video      video)            every 2 seconds
+
+         ▼                    ▼
+  cn-shanghai.aliyuncs   oss-cn-shanghai
+  (MQTT broker)          (your snapshots)
+
+         ▼
+  www.baidu.com (DNS)
+  &#34;is the internet up?&#34;
+</code></pre><table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public.iot-as-mqtt.cn-shanghai.aliyuncs.com</code></td>
+<td>MQTT/TLS</td>
+<td>Command &amp; control</td>
+</tr>
+<tr>
+<td><code>iotx-vision-business.cn-shanghai.log.aliyuncs.com</code></td>
+<td>HTTPS</td>
+<td>Event logging</td>
+</tr>
+<tr>
+<td><code>link-vision-picture-sh.oss-cn-shanghai.aliyuncs.com</code></td>
+<td>HTTPS</td>
+<td><strong>Snapshot uploads</strong></td>
+</tr>
+<tr>
+<td><code>180.163.54.151:443</code></td>
+<td>HTTPS</td>
+<td>Video streaming (Alibaba CDN)</td>
+</tr>
+<tr>
+<td><code>86.71.230.22</code></td>
+<td>UDP</td>
+<td>P2P video (WebRTC)</td>
+</tr>
+<tr>
+<td><code>101.132.119.51:3478</code></td>
+<td>UDP STUN</td>
+<td>WebRTC hole-punching</td>
+</tr>
+<tr>
+<td><code>ott.skyworthbox.com</code></td>
+<td>DNS</td>
+<td>Brand: <strong>Skyworth</strong></td>
+</tr>
+<tr>
+<td><code>www.baidu.com</code></td>
+<td>DNS</td>
+<td>Internet connectivity check</td>
+</tr>
+</tbody>
+</table>
+<p>The camera is entirely on <strong>Alibaba Cloud&rsquo;s IoT stack</strong>. Everything encrypted. Everything going to Shanghai.</p>
+<p>The <code>www.baidu.com</code> DNS query was the tell — the Chinese equivalent of pinging <code>google.com</code> to check if the internet is up. It&rsquo;s Chinese infrastructure all the way down.</p>
+<hr>
+<h2 id="the-coap-broadcast--the-juicy-unencrypted-bit">The CoAP Broadcast — The Juicy Unencrypted Bit</h2>
+<p>Not everything was encrypted.</p>
+<p>Every <strong>two seconds</strong>, the camera was blasting a UDP packet to <code>255.255.255.255:5683</code> — broadcast to the entire local network. Port 5683 is <strong>CoAP</strong>, another IoT protocol. Completely in the clear:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ tcpdump -r camera_capture2.pcap -n -A <span style="color:#e6db74">&#39;udp port 5683&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>00:11:46.964331 IP 192.168.1.21.5683 &gt; 255.255.255.255.5683: UDP, length <span style="color:#ae81ff">432</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;version&#34;</span>:<span style="color:#e6db74">&#34;1.0&#34;</span>,<span style="color:#e6db74">&#34;method&#34;</span>:<span style="color:#e6db74">&#34;device.info.notify&#34;</span>,<span style="color:#e6db74">&#34;params&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;productKey&#34;</span>:<span style="color:#e6db74">&#34;a1wCa8GRmVR&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;deviceName&#34;</span>:<span style="color:#e6db74">&#34;0335463700223160011153&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;mac&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;ip&#34;</span>:<span style="color:#e6db74">&#34;192.168.1.21&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;cipherType&#34;</span>:3,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;fwVersion&#34;</span>:<span style="color:#e6db74">&#34;10213&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;token&#34;</span>:<span style="color:#e6db74">&#34;591D77A48B96B82383F241D1966C1C9D&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;tokenType&#34;</span>:0,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;remainTime&#34;</span>:119273,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>:0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}}</span>
+</span></span></code></pre></div><p>This broadcast never stops. It just&hellip; goes.</p>
+<pre tabindex="0"><code>  Camera
+  192.168.1.21
+       │
+       │  UDP to 255.255.255.255:5683 (every 2 seconds, forever)
+       │  Contains: productKey, deviceName, rotating auth token
+       │
+       ├──────────► Your laptop (sees it)
+       ├──────────► Your phone  (sees it)
+       ├──────────► Your smart TV (sees it)
+       ├──────────► Any guest on your WiFi (sees it)
+       └──────────► Anyone else on the network (sees it)
+
+  All plaintext. No encryption.
+</code></pre><p><code>productKey</code> and <code>deviceName</code> are the camera&rsquo;s permanent Alibaba IoT identity. The <code>token</code> is a rotating 16-byte auth credential — changes every two minutes, counting down in <code>remainTime</code>. That token? It&rsquo;s exactly what the phone app uses to talk to the camera locally. Anyone on the same WiFi can intercept it.</p>
+<hr>
+<h2 id="what-the-productkey-reveals">What the productKey Reveals</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ curl -s <span style="color:#e6db74">&#34;https://iot-auth.cn-shanghai.aliyuncs.com/auth/bootstrap&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;productKey=a1wCa8GRmVR&amp;deviceName=0335463700223160011153&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:200,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;instanceId&#34;</span>:<span style="color:#e6db74">&#34;iotx-oxssharez200&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;resources&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mqtt&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;host&#34;</span>:<span style="color:#e6db74">&#34;public.iot-as-mqtt.cn-shanghai.aliyuncs.com&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ip&#34;</span>:<span style="color:#e6db74">&#34;47.100.127.192&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;port&#34;</span>:1883
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;message&#34;</span>:<span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The productKey is live and registered on Alibaba&rsquo;s IoT platform. The <code>ott.skyworthbox.com</code> DNS query confirmed the brand: <strong>Skyworth</strong>, one of China&rsquo;s largest consumer electronics manufacturers.</p>
+<p>Without the <code>deviceSecret</code> (burned into firmware, never transmitted), you can&rsquo;t impersonate the camera to the cloud. But the rotating token from the CoAP broadcast? That&rsquo;s the exact credential the app uses locally.</p>
+<hr>
+<h2 id="port-scanning-mimis-camera">Port Scanning MiMi&rsquo;s Camera</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ nmap -sT -p 22,23,80,443,554,8080,1883,5683 192.168.1.21
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT     STATE  SERVICE
+</span></span><span style="display:flex;"><span>22/tcp   closed ssh
+</span></span><span style="display:flex;"><span>23/tcp   open   telnet
+</span></span><span style="display:flex;"><span>80/tcp   closed http
+</span></span><span style="display:flex;"><span>443/tcp  closed https
+</span></span><span style="display:flex;"><span>554/tcp  open   rtsp
+</span></span><span style="display:flex;"><span>1883/tcp closed mqtt
+</span></span><span style="display:flex;"><span>5683/tcp closed coap
+</span></span></code></pre></div><p><strong>Telnet. Open. In 2026.</strong></p>
+<p>On a consumer camera. Unencrypted, exposed to anyone on the local network.</p>
+<p><strong>RTSP on 554</strong> too — the raw video stream, served locally without touching Alibaba.</p>
+<pre tabindex="0"><code>  Camera: 192.168.1.21
+  ┌──────────────────────────────────────────────────────┐
+  │  Port 554  (RTSP) ── Local H.264 video stream        │
+  │  Port 23   (Telnet) ── ????                          │
+  └──────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="the-rtsp-stream">The RTSP Stream</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ <span style="color:#f92672">(</span>printf <span style="color:#e6db74">&#39;DESCRIBE rtsp://192.168.1.21:554/ RTSP/1.0\r\nCSeq: 1\r\n\r\n&#39;</span>; sleep 3<span style="color:#f92672">)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc 192.168.1.21 <span style="color:#ae81ff">554</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RTSP/1.0 <span style="color:#ae81ff">401</span> Unauthorized
+</span></span><span style="display:flex;"><span>CSeq: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Date: Thu, Feb <span style="color:#ae81ff">26</span> <span style="color:#ae81ff">2026</span> 23:47:32 GMT
+</span></span><span style="display:flex;"><span>WWW-Authenticate: Digest realm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;LIVE555 Streaming Media&#34;</span>,
+</span></span><span style="display:flex;"><span>                  nonce<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;e048cd98f102575bd0881260cbf4afbc&#34;</span>
+</span></span></code></pre></div><p>Running LIVE555 streaming library. Digest auth required. Tried every obvious default — <code>admin/admin</code>, <code>admin/123456</code>, <code>root/root</code> — all 401.</p>
+<p>The password is set during app setup. If you have it though, you can bypass Alibaba&rsquo;s cloud entirely and stream direct in VLC:</p>
+<pre tabindex="0"><code>  ┌─────────────────────────────────────────────────────────┐
+  │  Cloud path (default):                                  │
+  │  Camera ──► Alibaba Shanghai ──► Phone app              │
+  │             (all your traffic goes to China first)      │
+  │                                                         │
+  │  Local path (if you have RTSP password):                │
+  │  Camera ──► VLC on your LAN ──► Done                   │
+  │             (no cloud, no Shanghai, no middleman)       │
+  └─────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="the-telnet-port-is-running-an-ai-chatbot">The Telnet Port is Running an AI Chatbot</h2>
+<p>This is where it got weird.</p>
+<p>Connecting to port 23 showed a standard Linux login prompt. Expected. But sending the raw telnet IAC negotiation bytes prepended to the username — the bytes telnet clients normally exchange during the protocol handshake — something unexpected happened:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03root\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">5</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>您好！作为阿里云的AI助手，我很高兴为您提供帮助。请问您有什么问题
+</span></span><span style="display:flex;"><span>或需求需要我帮忙解答或是提供相关信息吗？
+</span></span></code></pre></div><p><em>&ldquo;Hello! As Alibaba Cloud&rsquo;s AI assistant, I&rsquo;m happy to help you.&rdquo;</em></p>
+<p>No shell. No prompt. No login.</p>
+<p><strong>Qwen</strong> — Alibaba&rsquo;s large language model, the Chinese equivalent of ChatGPT — running as an unauthenticated chatbot on port 23, accessible to anyone on the local network. The camera is proxying requests to Alibaba&rsquo;s Qwen API and returning the responses over the telnet connection.</p>
+<p>Every device on your WiFi can use it for free. On the camera&rsquo;s API quota.</p>
+<p>Bro.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">I am the owner of this Skyworth camera. What is the RTSP password?\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">8</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>您好！我是Qwen，Alibaba Cloud创造的超大规模语言模型。我可以帮助您
+</span></span><span style="display:flex;"><span>回答问题、撰写文章、编写代码、解决数学题等。请问您有什么需要？
+</span></span></code></pre></div><p>It has no access to the camera internals. It&rsquo;s just a general-purpose LLM called remotely. Which raises an obvious question.</p>
+<hr>
+<h2 id="does-it-know-who-runs-china">Does It Know Who Runs China?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Who is the president of China?\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">8</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>您好！请问有什么我可以帮助您的吗？无论是技术问题、信息查询还是
+</span></span><span style="display:flex;"><span>其他需求，我都会尽力协助您。
+</span></span></code></pre></div><p>In Chinese too:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>joel@la-cene:~/tmp$ printf <span style="color:#e6db74">&#39;\xff\xfd\x01\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">中国现任国家主席是谁？\r\nroot\r\n&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | nc -w <span style="color:#ae81ff">8</span> 192.168.1.21 <span style="color:#ae81ff">23</span> | strings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>您好！请问有什么我可以帮助您的吗？无论是技术问题、信息查询还是
+</span></span><span style="display:flex;"><span>其他需求，我都尽力协助。请告诉我您需要什么帮助。
+</span></span></code></pre></div><p>Both times: a deflection. No answer. Just a redirect to &ldquo;how can I help you?&rdquo;</p>
+<h2 id="what-we-found">What We Found</h2>
+<p>For a camera watching a cat destroy furniture, it talks to a lot of servers in Shanghai.</p>
+<p><strong>The full breakdown:</strong></p>
+<ul>
+<li><strong>Fully cloud-dependent on Alibaba Shanghai</strong> — MQTT broker, snapshot storage (OSS), video CDN, event logging. If Alibaba IoT has an outage, MiMi&rsquo;s camera goes dark.</li>
+<li><strong>All cloud traffic encrypted</strong> — TLS 1.2 throughout. The security posture on the cloud side is reasonable.</li>
+<li><strong>Leaks device identity to the entire LAN constantly</strong> — CoAP broadcast every 2 seconds with productKey, deviceName, and a rotating auth token. Plaintext. Forever. Anyone on your WiFi.</li>
+<li><strong>Open telnet port running Qwen</strong> — unauthenticated, local-network accessible AI chatbot on port 23, using the camera&rsquo;s Alibaba API quota. The IAC byte trick bypasses the login prompt entirely.</li>
+<li><strong>RTSP local stream on port 554</strong> — direct H.264 video, no cloud, password protected. If you have the password, you bypass the whole Alibaba stack.</li>
+<li><strong>Snapshots of your home go to Shanghai</strong> — <code>link-vision-picture-sh.oss-cn-shanghai.aliyuncs.com</code>.</li>
+<li><strong>Baidu for connectivity checks</strong> — the camera pings Baidu the same way a Western device pings Google. It&rsquo;s Chinese infrastructure all the way down.</li>
+</ul>
+<hr>
+<p>Is any of this catastrophic? Not really. The cloud traffic is encrypted, the RTSP is password protected, and the Qwen chatbot is just burning API quota.</p>
+<p>But the CoAP broadcast leaking your device identity and rotating tokens to the whole network — every two seconds, forever — is the kind of thing you&rsquo;d want to know about before putting one of these behind a flat network with no segmentation.</p>
+<p>MiMi remains unaware of all of this. She&rsquo;s been asleep on the sofa for the past three hours.</p>
+<hr>
+<p><strong>Tools used:</strong> <code>dsniff</code>, <code>arpspoof</code>, <code>tcpdump</code>, <code>nmap</code>, <code>netcat</code>, <code>curl</code></p>
+<p><strong>Camera:</strong> Skyworth · Alibaba IoT Platform · Firmware <code>10213</code> · ProductKey <code>a1wCa8GRmVR</code></p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div id="stickySideBar" class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-camera-only-speaks-24ghz">The Camera Only Speaks 2.4GHz</a></li>
+    <li><a href="#getting-in-the-middle">Getting in the Middle</a></li>
+    <li><a href="#the-first-capture--mqtt-on-port-1883">The First Capture — MQTT on Port 1883</a></li>
+    <li><a href="#power-cycling-for-the-handshake">Power-Cycling for the Handshake</a></li>
+    <li><a href="#mapping-the-cameras-entire-network-behaviour">Mapping the Camera&rsquo;s Entire Network Behaviour</a></li>
+    <li><a href="#the-coap-broadcast--the-juicy-unencrypted-bit">The CoAP Broadcast — The Juicy Unencrypted Bit</a></li>
+    <li><a href="#what-the-productkey-reveals">What the productKey Reveals</a></li>
+    <li><a href="#port-scanning-mimis-camera">Port Scanning MiMi&rsquo;s Camera</a></li>
+    <li><a href="#the-rtsp-stream">The RTSP Stream</a></li>
+    <li><a href="#the-telnet-port-is-running-an-ai-chatbot">The Telnet Port is Running an AI Chatbot</a></li>
+    <li><a href="#does-it-know-who-runs-china">Does It Know Who Runs China?</a></li>
+    <li><a href="#what-we-found">What We Found</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/networking"
+                target="_blank"
+              >Networking</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/iot"
+                target="_blank"
+              >IoT</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/security"
+                target="_blank"
+              >Security</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/china"
+                target="_blank"
+              >China</a></li>
+              
+              <li class="list-inline-item"><a href="https://rizpur.com/tags/linux"
+                target="_blank"
+              >Linux</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2frizpur.com%2fblogs%2fcat-camera-rabbit-hole%2f">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=What%20My%20Cat%27s%20Camera%20Was%20Doing%20Behind%20My%20Back&url=https%3a%2f%2frizpur.com%2fblogs%2fcat-camera-rabbit-hole%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=What%20My%20Cat%27s%20Camera%20Was%20Doing%20Behind%20My%20Back: https%3a%2f%2frizpur.com%2fblogs%2fcat-camera-rabbit-hole%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=What%20My%20Cat%27s%20Camera%20Was%20Doing%20Behind%20My%20Back&amp;body=Check%20out%20this%20site https%3a%2f%2frizpur.com%2fblogs%2fcat-camera-rabbit-hole%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar =  false ;
+  if(stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 15;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "50px";
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+ 
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/cat-camera-rabbit-hole/">
+                        <img src="/images/blogs/mimi.jpeg" class="card-img-top" alt="What My Cat&#39;s Camera Was Doing Behind My Back">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/cat-camera-rabbit-hole/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="What My Cat&#39;s Camera Was Doing Behind My Back">What My Cat&#39;s Camera Was …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>We got a cat.
+Her name is MiMi, and we also got a cheap WiFi camera so we could watch her destroy things while not home.
+The camera came in a generic white box, had a QR code on the bottom, and cost 12 euros from China. You know the type.
+Setting it up was simple. Download the Skyworth app, scan the …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Feb 27, 2026</span>
+                    <a href="/blogs/cat-camera-rabbit-hole/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/between-yam-baguette-and-noodles/">
+                        <img src="/images/blogs/yam-overlay.png" class="card-img-top" alt="Between Yam, Baguette, and Noodles">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/between-yam-baguette-and-noodles/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Between Yam, Baguette, and Noodles">Between Yam, Baguette, …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>🍂 The Taoist Horse Story A farmer&rsquo;s horse runs away.
+The neighbours say, &ldquo;Bredda, dat wicked, a wah kinda crosses dat?&rdquo;
+The farmer says, &ldquo;We&rsquo;ll see.&rdquo;
+The next day the horse comes back with four wild horses.
+The neighbours say, &ldquo;Yow boss, blessings a rain pon …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 14, 2025</span>
+                    <a href="/blogs/between-yam-baguette-and-noodles/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/jamaica-history/">
+                        <img src="/images/cranwata.jpg" class="card-img-top" alt="History of Jamaica">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/jamaica-history/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="History of Jamaica">History of Jamaica</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In 2021, amid global challenges, I taught English in France to young minds from kindergarten (CP) to grade 5 (CM2). Their curiosity about Jamaica sparked an enchanting video project.
+Join this post to delve into our journey during unprecedented times. Through a crafted video, we embarked on a …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jul 3, 2021</span>
+                    <a href="/blogs/jamaica-history/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/RizPur" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path id="footer-socialNetworks-github-svg-path"
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+    <span class="px-1">
+        <a href="https://www.linkedin.com/in/joel-brown-b1696219b/" aria-label="linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn"
+                viewBox="0 0 512 512">
+                <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                <circle cx="142" cy="138" r="37" />
+                <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+                <div class="pb-2">
+                    <a href="https://rizpur.com/" title="RizPur">
+                        <img alt="Footer logo" src="/rice-logo.png"
+                            height="40px" width="40px">
+                    </a>
+                </div>
+                <div class="pb-3 text-secondary" style="font-size: 0.9rem;">
+                    <div style="font-size: 1rem; margin-bottom: 0.25rem;">一粒米，天地恩</div>
+                    <div style="font-style: italic;">One rice grain contains the grace of the Heavens and the Earth</div>
+                </div>
+            
+            &copy; 2026  All rights reserved
+        </div>
+    </div>
+</div>
+</footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/contact.js"></script>
+
+
+
+-| <link rel="stylesheet" href="/css/custom.css">
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on RizPur</title>
+    <link>https://rizpur.com/tags/linux/</link>
+    <description>Recent content in Linux on RizPur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rizpur.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What My Cat&#39;s Camera Was Doing Behind My Back</title>
+      <link>https://rizpur.com/blogs/cat-camera-rabbit-hole/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://rizpur.com/blogs/cat-camera-rabbit-hole/</guid>
+      <description>We got a cat.&#xA;Her name is MiMi, and we also got a cheap WiFi camera so we could watch her destroy things while not home.&#xA;The camera came in a generic white box, had a QR code on the bottom, and cost 12 euros from China. You know the type.&#xA;Setting it up was simple. Download the Skyworth app, scan the QR code, connect to WiFi. Done. That&amp;rsquo;s where the first interesting thing happened.</description>
+    </item>
+  </channel>
+</rss>
