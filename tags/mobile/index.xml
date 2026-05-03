@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flutter on RizPur</title>
-    <link>https://rizpur.com/tags/flutter/</link>
-    <description>Recent content in Flutter on RizPur</description>
+    <title>Mobile on RizPur</title>
+    <link>https://rizpur.com/tags/mobile/</link>
+    <description>Recent content in Mobile on RizPur</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://rizpur.com/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://rizpur.com/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Somnia</title>
       <link>https://rizpur.com/projects/somnia/</link>
